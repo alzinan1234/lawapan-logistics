@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { ArrowRight, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = 2025;
 
   const footerLinks = [
     { name: 'About Us', href: '/about' },

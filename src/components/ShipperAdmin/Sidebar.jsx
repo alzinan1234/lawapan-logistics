@@ -35,8 +35,10 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   useEffect(() => {
-    if (!isOpen) setSettingsOpen(false);
-  }, [isOpen]);
+    if (!isOpen && settingsOpen) {
+      setSettingsOpen(false);
+    }
+  }, [isOpen, settingsOpen]);
 
   return (
     <aside

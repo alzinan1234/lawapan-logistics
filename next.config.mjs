@@ -7,6 +7,18 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'static-01.daraz.com.bd',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.thecarexpert.co.uk',
+      },
     ],
   },
 };

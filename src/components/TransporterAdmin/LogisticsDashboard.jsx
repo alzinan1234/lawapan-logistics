@@ -1,5 +1,6 @@
  "use client";
 import React, { useState, useRef } from 'react';
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight, FileText } from 'lucide-react';
 
 const ActiveShipmentsDashboard = () => {
@@ -88,9 +89,11 @@ const ActiveShipmentsDashboard = () => {
                 }`}
               >
                 <div className="w-3 h-3 rounded-full bg-orange-500 mb-3" />
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=200&h=120&fit=crop"
                   alt="Truck"
+                  width={200}
+                  height={120}
                   className="w-full h-24 object-cover rounded-lg mb-3"
                 />
                 <h3 className="font-bold text-sm text-gray-900">{shipment.name}</h3>
@@ -132,9 +135,11 @@ const ActiveShipmentsDashboard = () => {
               <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
               In progress
             </div>
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=600&fit=crop"
               alt="Map"
+              width={800}
+              height={600}
               className="w-full h-full object-cover"
             />
             {/* Map overlay to simulate real map */}
@@ -150,9 +155,11 @@ const ActiveShipmentsDashboard = () => {
 
               {/* Image Slider */}
               <div className="relative mb-6 group">
-                <img
+              <Image
                   src={shipmentImages[currentImageIndex]}
                   alt="Shipment"
+                  width={400}
+                  height={224}
                   className="w-full h-56 object-cover rounded-xl"
                 />
                 <button

@@ -1,7 +1,6 @@
 // components/SignUpForm.js
 "use client";
 import { User, Truck } from 'lucide-react';
-
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -195,7 +194,7 @@ export default function SignUpForm() {
         {/* Placeholder for the logo image. Replace './login-logo (2).png' with the actual path. 
             I've added a width/max-width to resemble the size in the image. */}
         <img 
-          src="./login-logo (2).png" 
+          src="/login-logo (2).png" 
           alt="LAWANPAN TRUCK Logo" 
           className="max-w-xs w-28 md:w-36 lg:w-40 mx-auto" 
         />

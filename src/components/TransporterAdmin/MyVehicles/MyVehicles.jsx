@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Search, Plus, Eye, Pencil, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -35,7 +36,7 @@ export default function MyVehicles() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {vehicles.map((v) => (
           <div key={v.id} className="bg-white p-5 rounded-[24px] shadow-sm border border-gray-50 flex flex-col items-center group hover:shadow-md transition">
-            <img src={v.img} alt={v.name} className="w-full h-32 object-contain mb-4 group-hover:scale-105 transition duration-300" />
+            <Image src={v.img} alt={v.name} width={200} height={128} className="w-full h-32 object-contain mb-4 group-hover:scale-105 transition duration-300" />
             <h3 className="font-bold text-gray-800 text-sm text-center line-clamp-1">{v.name}</h3>
             <p className="text-gray-400 text-[10px] font-black uppercase mt-1 mb-4 tracking-widest">{v.plate}</p>
             

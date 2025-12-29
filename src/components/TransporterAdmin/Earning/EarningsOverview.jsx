@@ -1,6 +1,7 @@
 // app/earnings/page.js
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Search, Filter, Eye } from 'lucide-react';
 
@@ -76,7 +77,7 @@ export default function EarningsOverview() {
                 <td className="px-6 py-4 text-sm text-gray-600">{row.id}</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
-                    <img src={row.avatar} className="w-8 h-8 rounded-full border" alt="" />
+                    <Image src={row.avatar} width={32} height={32} className="w-8 h-8 rounded-full border" alt="" />
                     <span className="text-sm font-medium text-gray-700">{row.user}</span>
                   </div>
                 </td>

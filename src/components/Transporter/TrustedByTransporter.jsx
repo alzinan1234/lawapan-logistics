@@ -1,13 +1,14 @@
 import React from 'react';
+import Image from 'next/image';
 
 const TrustedByTransporter = () => {
   // You can replace these with actual logo images
   const logos = [
-    { id: 1, name: "Company 1", image: "./trusted-seller-logo.webp" },
-    { id: 2, name: "Company 2", image: "./trusted-seller-logo.webp" },
-    { id: 3, name: "Company 3", image: "./trusted-seller-logo.webp" },
-    { id: 4, name: "Company 4", image: "./trusted-seller-logo.webp" },
-    { id: 5, name: "Company 5", image: "./trusted-seller-logo.webp" },
+    { id: 1, name: "Company 1", image: "/trusted-seller-logo.webp" },
+    { id: 2, name: "Company 2", image: "/trusted-seller-logo.webp" },
+    { id: 3, name: "Company 3", image: "/trusted-seller-logo.webp" },
+    { id: 4, name: "Company 4", image: "/trusted-seller-logo.webp" },
+    { id: 5, name: "Company 5", image: "/trusted-seller-logo.webp" },
   ];
 
   return (
@@ -30,9 +31,11 @@ const TrustedByTransporter = () => {
               key={logo.id}
               className="bg-white rounded-xl p-6 md:p-8 w-32 h-20 md:w-50 md:h-29 flex items-center justify-center hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
             >
-              <img
+              <Image
                 src={logo.image}
                 alt={logo.name}
+                width={200}
+                height={100}
                 className="max-w-full max-h-full object-contain"
               />
             </div>
