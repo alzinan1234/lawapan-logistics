@@ -66,7 +66,7 @@ const HeroBanner = () => {
                     value={pickupLocation}
                     onChange={(e) => setPickupLocation(e.target.value)}
                     placeholder="Martyrs' Memorial, Algeria"
-                    className="w-full bg-[#f3f4f6] pl-12 pr-4 py-4 text-sm font-medium rounded-full border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                    className="w-full bg-[#f3f4f6] pl-12 pr-4 py-4 text-sm font-medium text-gray-700 rounded-full border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all"
                   />
                 </div>
               </div>
@@ -85,7 +85,7 @@ const HeroBanner = () => {
                     value={deliveryLocation}
                     onChange={(e) => setDeliveryLocation(e.target.value)}
                     placeholder="Martyrs' Memorial, Algeria"
-                    className="w-full bg-[#f3f4f6] pl-12 pr-4 py-4 text-sm font-medium rounded-full border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                    className="w-full bg-[#f3f4f6] pl-12 pr-4 py-4 text-sm font-medium text-gray-700 rounded-full border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all"
                   />
                 </div>
               </div>
@@ -104,7 +104,7 @@ const HeroBanner = () => {
                     value={merchandise}
                     onChange={(e) => setMerchandise(e.target.value)}
                     placeholder="Food commodities"
-                    className="w-full bg-[#f3f4f6] pl-12 pr-4 py-4 text-sm font-medium rounded-full border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                    className="w-full bg-[#f3f4f6] pl-12 pr-4 py-4 text-sm font-medium text-gray-700 rounded-full border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all"
                   />
                 </div>
               </div>
