@@ -2,6 +2,48 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
+const months = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+];
+
+const MonthDropdown = ({ month, setMonth, show, setShow }) => (
+  <div className="relative">
+    <button
+      onClick={() => setShow(!show)}
+      className="flex items-center gap-1.5 px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-medium hover:bg-blue-700 transition-colors"
+    >
+      {month}
+      <ChevronDown className={`w-3.5 h-3.5 transition-transform ${show ? 'rotate-180' : ''}`} />
+    </button>
+    
+    {show && (
+      <>
+        <div 
+          className="fixed inset-0 z-10" 
+          onClick={() => setShow(false)}
+        />
+        <div className="absolute top-full mt-2 right-0 bg-white border border-gray-200 rounded-lg shadow-lg z-20 min-w-[130px] max-h-[280px] overflow-y-auto">
+          {months.map((m) => (
+            <button
+              key={m}
+              onClick={() => {
+                setMonth(m);
+                setShow(false);
+              }}
+              className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-100 transition-colors ${
+                m === month ? 'bg-blue-50 text-blue-600 font-medium' : 'text-gray-700'
+              }`}
+            >
+              {m}
+            </button>
+          ))}
+        </div>
+      </>
+    )}
+  </div>
+);
+
 const TransporterStats = () => {
   const [progressMonth, setProgressMonth] = useState('January');
   const [completedMonth, setCompletedMonth] = useState('January');
@@ -10,11 +52,6 @@ const TransporterStats = () => {
   const [showProgressDropdown, setShowProgressDropdown] = useState(false);
   const [showCompletedDropdown, setShowCompletedDropdown] = useState(false);
   const [showEarningsDropdown, setShowEarningsDropdown] = useState(false);
-
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
 
   // Sample data for different months
   const statsData = {
@@ -31,43 +68,6 @@ const TransporterStats = () => {
     'November': { progress: 7, completed: 26, earnings: 310 },
     'December': { progress: 5, completed: 21, earnings: 250 }
   };
-
-  const MonthDropdown = ({ month, setMonth, show, setShow }) => (
-    <div className="relative">
-      <button
-        onClick={() => setShow(!show)}
-        className="flex items-center gap-1.5 px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-medium hover:bg-blue-700 transition-colors"
-      >
-        {month}
-        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${show ? 'rotate-180' : ''}`} />
-      </button>
-      
-      {show && (
-        <>
-          <div 
-            className="fixed inset-0 z-10" 
-            onClick={() => setShow(false)}
-          />
-          <div className="absolute top-full mt-2 right-0 bg-white border border-gray-200 rounded-lg shadow-lg z-20 min-w-[130px] max-h-[280px] overflow-y-auto">
-            {months.map((m) => (
-              <button
-                key={m}
-                onClick={() => {
-                  setMonth(m);
-                  setShow(false);
-                }}
-                className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-100 transition-colors ${
-                  m === month ? 'bg-blue-50 text-blue-600 font-medium' : 'text-gray-700'
-                }`}
-              >
-                {m}
-              </button>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
 
   return (
     <div className="flex gap-5 p-6 bg-gray-50">
