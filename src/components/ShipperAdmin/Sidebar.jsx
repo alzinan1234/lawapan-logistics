@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -33,12 +33,6 @@ const settingsDropdown = [
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const pathname = usePathname();
   const [settingsOpen, setSettingsOpen] = useState(false);
-
-  useEffect(() => {
-    if (!isOpen && settingsOpen) {
-      setSettingsOpen(false);
-    }
-  }, [isOpen, settingsOpen]);
 
   return (
     <aside
