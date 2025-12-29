@@ -1,9 +1,11 @@
  "use client";
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Eye, Truck, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Main Shipments List Component
 const ActiveShipments = () => {
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
 
   const [shipments, setShipments] = useState([
@@ -45,13 +47,11 @@ const ActiveShipments = () => {
   ]);
    
   const handleViewDetail = (id) => {
-    // Next.js navigation
-    window.location.href = `/dashboard/Transporter/active-shipments/${id}`;
+    router.push(`/dashboard/Transporter/active-shipments/${id}`);
   };
 
   const handleViewTracking = (id) => {
-    // Next.js navigation
-    window.location.href = `/dashboard/Transporter/active-shipments/${id}/tracking`;
+    router.push(`/dashboard/Transporter/active-shipments/${id}/tracking`);
   };
 
   return (

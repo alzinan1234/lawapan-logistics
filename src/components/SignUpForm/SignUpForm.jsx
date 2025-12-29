@@ -224,7 +224,7 @@ export default function SignUpForm() {
           <User className={`w-6 h-6 ${role === 'shipper' ? 'text-blue-600' : 'text-gray-400'}`} />
         </div>
         <div>
-          <div className={`font-bold text-lg ${role === 'shipper' ? 'text-gray-900' : 'text-gray-600'}`}>I'm a shipper</div>
+          <div className={`font-bold text-lg ${role === 'shipper' ? 'text-gray-900' : 'text-gray-600'}`}>{`I'm a shipper`}</div>
           <div className="text-xs text-gray-500 mt-1">I need to ship goods</div>
         </div>
       </div>
@@ -247,7 +247,7 @@ export default function SignUpForm() {
           <Truck className={`w-6 h-6 ${role === 'transporter' ? 'text-blue-600' : 'text-gray-400'}`} />
         </div>
         <div>
-          <div className={`font-bold text-lg ${role === 'transporter' ? 'text-gray-900' : 'text-gray-600'}`}>I'm a Transporter</div>
+          <div className={`font-bold text-lg ${role === 'transporter' ? 'text-gray-900' : 'text-gray-600'}`}>{`I'm a Transporter`}</div>
           <div className="text-xs text-gray-500 mt-1">I have trucks to offer</div>
         </div>
       </div>
