@@ -23,6 +23,7 @@ const InvoicesPage = () => {
       issuedOn: '13 Feb 2025',
       status: 'Paid',
     }
+ 
   ]);
 
   const handleViewInvoice = (id) => {
