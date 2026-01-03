@@ -30,8 +30,8 @@ const Navbar = () => {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link href="/" className="">
-              <div className="relative w-[67px] h-[60px]">
-                <Image src="/web-logo.png" alt="Logo" fill className="object-contain" />
+              <div className="relative w-[67px] h-[67px]">
+                <Image src="/main-logo.png" alt="Logo" fill className="object-contain" />
               </div>
             </Link>
 

@@ -38,8 +38,8 @@ const Footer = () => {
           {/* Logo Section */}
           <div className="flex items-start">
             <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shrink-0 relative">
-                <Image src="/web-logo.png" alt="Logo" fill className="object-contain p-1" />
+              <div className="w-15 h-15  rounded-full flex items-center justify-center shrink-0 relative">
+                <Image src="/web-logo.png" alt="Logo" fill className=" p-1" />
               </div>
               <span className="text-lg font-bold uppercase">
                 LAWAPAN TRUCK

@@ -23,12 +23,15 @@ export default function SignUpForm() {
   const [showTruckOptions, setShowTruckOptions] = useState(false);
 
   const truckTypeOptions = [
+
+     
     { id: 'tractorhead', label: 'Tractorhead (566)', value: 'tractorhead', count: 566 },
     { id: 'truck', label: 'Truck (690)', value: 'truck', count: 690 },
     { id: 'light-commercial', label: 'Light commercial vehicle (970)', value: 'light-commercial', count: 970 },
     { id: 'construction', label: 'Construction equipment (371)', value: 'construction', count: 371 },
     { id: 'semi-trailer', label: 'Semi-trailer (285)', value: 'semi-trailer', count: 285 },
     { id: 'trailer', label: 'Trailer (43)', value: 'trailer', count: 43 },
+
   ];
 
   const countries = ['Benin', 'Nigeria', 'Ghana', 'Togo', 'Ivory Coast'];
