@@ -11,7 +11,7 @@ const TransporterBanner = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')", // আপনার ইমেজ পাথ এখানে দিন
+          backgroundImage: "url('https://delmashipping.com/wp-content/uploads/2016/11/The-Different-Modes-of-Transportation-Header-e1645547707423.jpg')", // আপনার ইমেজ পাথ এখানে দিন
         }}
       >
         {/* Subtle Overlay for better readability */}

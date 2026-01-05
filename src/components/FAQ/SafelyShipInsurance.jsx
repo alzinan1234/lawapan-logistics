@@ -56,8 +56,8 @@ const SafelyShipInsurance = () => {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div className="relative w-full h-screen  bg-center bg-no-repeat bg-cover " style={{
-        backgroundImage: "url('/trac-image.png')",
+      <div className="relative w-full h-[600px] md:h-[700px]  bg-center bg-no-repeat bg-cover " style={{
+        backgroundImage: "url('https://delmashipping.com/wp-content/uploads/2016/11/The-Different-Modes-of-Transportation-Header-e1645547707423.jpg')",
         width: '100%',
       }}>
         {/* Overlay */}
