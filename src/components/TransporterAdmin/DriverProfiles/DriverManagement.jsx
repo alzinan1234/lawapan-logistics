@@ -18,7 +18,6 @@ export default function DriverManagement() {
             <Plus size={18} />
             <span className="text-sm font-medium">Add Driver</span>
           </button>
-
           {/* Search Bar */}
           <div className="flex items-center border border-slate-200 rounded-lg px-3 py-2 w-full md:w-64">
             <Search size={18} className="text-slate-400 mr-2" />
@@ -28,7 +27,6 @@ export default function DriverManagement() {
               className="outline-none text-sm w-full placeholder:text-slate-400" 
             />
           </div>
-
           {/* Filter Icon Button */}
           <button className="p-2 bg-[#007bff] text-white rounded-lg hover:bg-blue-600 transition">
             <SlidersHorizontal size={20} />
@@ -73,7 +71,6 @@ export default function DriverManagement() {
         <button className="p-2 border border-blue-500 rounded-full text-blue-500 hover:bg-blue-50">
           <ChevronLeft size={18} />
         </button>
-        
         <button className="w-8 h-8 flex items-center justify-center bg-[#005eb8] text-white rounded text-sm font-medium">1</button>
         <button className="w-8 h-8 flex items-center justify-center text-slate-500 hover:bg-slate-100 rounded text-sm">2</button>
         <button className="w-8 h-8 flex items-center justify-center text-slate-500 hover:bg-slate-100 rounded text-sm">3</button>

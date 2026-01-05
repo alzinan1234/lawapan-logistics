@@ -22,6 +22,7 @@ const AvailableBidsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
+
   const filteredBids = mockAvailableBids.filter(bid =>
     bid.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     bid.from.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -83,7 +84,7 @@ const AvailableBidsPage = () => {
                 <p className="text-sm font-semibold text-gray-900">
                   ${bid.minPrice.toLocaleString()} - ${bid.maxPrice.toLocaleString()}
                 </p>
-              </div>
+              </div>  
             </div>
           ))}
         </div>
