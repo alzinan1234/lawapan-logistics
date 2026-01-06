@@ -68,7 +68,7 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-3xl border border-blue-200 overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+              className="group relative bg-white rounded-3xl border border-blue-200 overflow-hidden  transition-all duration-300 transform "
               data-aos="fade-up"
               data-aos-delay={200 + (index * 100)}
             >
