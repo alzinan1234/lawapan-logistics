@@ -1,10 +1,21 @@
 "use client";
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const FAQSection = () => {
   const [openQuestionId, setOpenQuestionId] = useState(null);
+
+  useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out',
+      once: true,
+      offset: 100,
+    });
+  }, []);
 
   const faqData = [
     {
@@ -57,7 +68,11 @@ const FAQSection = () => {
     <div className="w-full bg-white py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Title */}
-        <div className="mb-8">
+        <div 
+          className="mb-8"
+          data-aos="fade-down"
+          data-aos-delay="100"
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             Frequently Asked Questions
           </h2>
@@ -65,7 +80,11 @@ const FAQSection = () => {
         </div>
 
         {/* Section Title */}
-        <div className="mb-6">
+        <div 
+          className="mb-6"
+          data-aos="fade-right"
+          data-aos-delay="150"
+        >
           <h3 className="text-[#0066cc] font-medium text-base">
             Shipper FAQ :
           </h3>
@@ -73,10 +92,12 @@ const FAQSection = () => {
 
         {/* FAQ Accordion */}
         <div className="space-y-0">
-          {faqData.map((item) => (
+          {faqData.map((item, index) => (
             <div
               key={item.id}
               className="border-b border-gray-200"
+              data-aos="fade-up"
+              data-aos-delay={200 + (index * 50)}
             >
               {/* Question */}
               <button
@@ -89,7 +110,11 @@ const FAQSection = () => {
                     {item.question}
                   </span>
                 </div>
-                <div className="flex-shrink-0 w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center">
+                <div 
+                  className="flex-shrink-0 w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center transition-transform duration-300"
+                  data-aos="zoom-in"
+                  data-aos-delay={250 + (index * 50)}
+                >
                   {openQuestionId === item.id ? (
                     <ChevronUp className="w-3.5 h-3.5 text-white" />
                   ) : (
@@ -100,7 +125,11 @@ const FAQSection = () => {
 
               {/* Answer */}
               {openQuestionId === item.id && (
-                <div className="pb-4 pl-11 pr-4 text-gray-600 text-sm leading-relaxed">
+                <div 
+                  className="pb-4 pl-11 pr-4 text-gray-600 text-sm leading-relaxed"
+                  data-aos="fade-down"
+                  data-aos-duration="500"
+                >
                   {item.answer}
                 </div>
               )}

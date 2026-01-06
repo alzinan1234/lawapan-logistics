@@ -1,7 +1,19 @@
-import React from 'react';
+ "use client";
+import React, { useEffect } from 'react';
 import { MapPin, Mail, Phone } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const HiringPage = () => {
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
   const contactInfo = [
     {
       id: 1,
@@ -26,36 +38,50 @@ const HiringPage = () => {
   return (
     <div className="w-full bg-white py-12 px-4">
       <div className="max-w-4xl mx-auto">
-        {/* Title Section */}
-        <div className="mb-8">
+        {/* Title Section with animation */}
+        <div 
+          className="mb-8"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             Lawapantruck is hiring
           </h1>
           <div className="w-32 h-1 bg-[#0066cc]"></div>
         </div>
 
-        {/* Subtitle */}
-        <div className="mb-6">
+        {/* Subtitle with animation */}
+        <div 
+          className="mb-6"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
           <h2 className="text-[#0066cc] font-medium text-lg">
             We are currently looking for :
           </h2>
         </div>
 
-        {/* Message Box */}
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12">
+        {/* Message Box with animation */}
+        <div 
+          className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           <p className="text-gray-600 text-sm leading-relaxed">
             Thank you for your interest in joining the Lawapantruck team. We do not have any job vacancies at this time, but we encourage you to stay tuned for future openings!
           </p>
         </div>
 
-        {/* Contact Information Cards */}
+        {/* Contact Information Cards with staggered animations */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {contactInfo.map((contact) => {
+          {contactInfo.map((contact, index) => {
             const IconComponent = contact.icon;
             return (
               <div
                 key={contact.id}
                 className="bg-gray-50 rounded-lg p-8 flex flex-col items-center text-center hover:bg-gray-100 transition-colors"
+                data-aos="zoom-in"
+                data-aos-delay={300 + (index * 100)}
               >
                 {/* Icon */}
                 <div className="w-14 h-14 bg-[#0066cc] rounded-full flex items-center justify-center mb-4">

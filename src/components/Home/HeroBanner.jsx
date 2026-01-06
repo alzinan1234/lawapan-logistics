@@ -1,12 +1,34 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { MapPin, Box } from 'lucide-react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-fade';
 
 const HeroBanner = () => {
   const [pickupLocation, setPickupLocation] = useState('');
   const [deliveryLocation, setDeliveryLocation] = useState('');
   const [merchandise, setMerchandise] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out',
+      once: true,
+      offset: 100,
+    });
+  }, []);
 
   const handleSearch = () => {
     setIsLoading(true);
@@ -16,44 +38,118 @@ const HeroBanner = () => {
     }, 1000);
   };
 
+  // Array of hero images - replace with your actual image URLs
+  const heroImages = [
+    {
+      id: 1,
+      url: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      title: "A simple, fast, and reliable transport solution",
+      description: "Simplify your logistics with Lawapan Truck. Track your shipment in real time, get secure payments, and connect with trusted transporters."
+    },
+    {
+      id: 2,
+      url: 'https://images.unsplash.com/photo-1501700493788-fa1a4fc9fe62?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      title: "Nationwide Coverage",
+      description: "Connect with transporters across the country for seamless delivery solutions."
+    },
+    {
+      id: 3,
+      url: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      title: "Real-Time Tracking",
+      description: "Monitor your shipments live with our advanced tracking technology."
+    },
+    {
+      id: 4,
+      url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      title: "Secure & Reliable",
+      description: "Your goods are protected with our secure payment and insurance solutions."
+    }
+  ];
+
   return (
     <div className="relative w-full bg-white font-sans">
       
-      {/* --- 1. Hero Image Section --- */}
-      <div 
-        className="relative w-full h-[600px] md:h-[700px] bg-cover bg-center flex items-center"
-        style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')` // Replace with your actual image path
-        }}
-      >
-        {/* Dark Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-black/20"></div>
-
-        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-2xl bg-black/30 backdrop-blur-sm p-8 md:p-12 rounded-sm">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              A simple, fast, and <br /> reliable transport solution
-            </h1>
-            <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-lg">
-              Simplify your logistics with Lawapan Truck. Track your shipment in real time, 
-              get secure payments, and connect with trusted transporters.
-            </p>
-          </div>
-        </div>
+      {/* --- 1. Swiper Hero Image Section --- */}
+      <div className="relative w-full h-[600px] md:h-[700px] overflow-hidden">
+        <Swiper
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          spaceBetween={0}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          speed={1000}
+          effect="fade"
+          fadeEffect={{ crossFade: true }}
+          pagination={{
+            clickable: true,
+            dynamicBullets: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation, EffectFade]}
+          className="w-full h-full"
+        >
+          {heroImages.map((image, index) => (
+            <SwiperSlide key={image.id}>
+              <div 
+                className="relative w-full h-full bg-cover bg-center flex items-center"
+                style={{ 
+                  backgroundImage: `url('${image.url}')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}
+              >
+                {/* Gradient overlay for better text readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
+                
+                <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
+                  <div 
+                    className="max-w-2xl bg-[#0000004D] backdrop-blur-sm p-8 md:p-12 rounded-sm"
+                    data-aos="fade-right"
+                    data-aos-delay="100"
+                    data-aos-once="false"
+                  >
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                      {image.title}
+                    </h1>
+                    <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-lg">
+                      {image.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
 
       {/* --- 2. Search Bar Section (Overlapping) --- */}
       <div className="relative z-20 -mt-20 md:-mt-24 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-[20px] shadow-2xl p-6 md:p-8 border border-gray-100">
-            <h3 className="text-gray-500 font-medium mb-6 text-sm uppercase tracking-wider">
+          <div 
+            className="bg-white rounded-[20px] shadow-2xl p-6 md:p-8 border border-gray-100"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h3 
+              className="text-gray-500 font-medium mb-6 text-sm uppercase tracking-wider"
+              data-aos="fade-down"
+              data-aos-delay="250"
+            >
               Find a transporter in one click
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
               
               {/* Pickup */}
-              <div className="space-y-2">
+              <div 
+                className="space-y-2"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
                 <label className="block text-[11px] font-semibold text-gray-400 uppercase ml-1">
                   Pickup (postal code or city)
                 </label>
@@ -72,7 +168,11 @@ const HeroBanner = () => {
               </div>
 
               {/* Delivery */}
-              <div className="space-y-2">
+              <div 
+                className="space-y-2"
+                data-aos="fade-up"
+                data-aos-delay="350"
+              >
                 <label className="block text-[11px] font-semibold text-gray-400 uppercase ml-1">
                   Delivery (postal code or city)
                 </label>
@@ -91,7 +191,11 @@ const HeroBanner = () => {
               </div>
 
               {/* Merchandise */}
-              <div className="space-y-2">
+              <div 
+                className="space-y-2"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
                 <label className="block text-[11px] font-semibold text-gray-400 uppercase ml-1">
                   Merchandise to be shipped
                 </label>
@@ -110,7 +214,10 @@ const HeroBanner = () => {
               </div>
 
               {/* Search Button */}
-              <div>
+              <div
+                data-aos="zoom-in"
+                data-aos-delay="450"
+              >
                 <button
                   onClick={handleSearch}
                   disabled={isLoading}

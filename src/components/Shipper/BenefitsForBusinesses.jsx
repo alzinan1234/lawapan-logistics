@@ -1,7 +1,20 @@
-import React from 'react';
+"use client";
+import React, { useEffect } from 'react';
 import { Clock, Truck, BarChart3, Shield } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const BenefitsForBusinesses = () => {
+  useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out',
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
   const benefits = [
     {
       icon: <Clock className="w-6 h-6 text-blue-500" />,
@@ -29,7 +42,11 @@ const BenefitsForBusinesses = () => {
     <div className="w-full bg-white py-12 md:py-16 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-10 md:mb-12">
+        <div 
+          className="text-center mb-10 md:mb-12"
+          data-aos="fade-down"
+          data-aos-delay="100"
+        >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
             Benefits for Businesses
           </h2>
@@ -41,19 +58,33 @@ const BenefitsForBusinesses = () => {
             <div
               key={index}
               className="flex flex-col items-center text-center group"
+              data-aos="fade-up"
+              data-aos-delay={200 + (index * 100)}
             >
               {/* Icon Container */}
-              <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 group-hover:scale-110 transition-all duration-300">
+              <div 
+                className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 group-hover:scale-110 transition-all duration-300"
+                data-aos="zoom-in"
+                data-aos-delay={300 + (index * 100)}
+              >
                 {benefit.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-base md:text-lg font-bold text-gray-900 mb-2">
+              <h3 
+                className="text-base md:text-lg font-bold text-gray-900 mb-2"
+                data-aos="fade-up"
+                data-aos-delay={350 + (index * 100)}
+              >
                 {benefit.title}
               </h3>
 
               {/* Description */}
-              <p className="text-xs md:text-sm text-gray-600">
+              <p 
+                className="text-xs md:text-sm text-gray-600"
+                data-aos="fade-up"
+                data-aos-delay={400 + (index * 100)}
+              >
                 {benefit.description}
               </p>
             </div>

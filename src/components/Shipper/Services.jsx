@@ -1,7 +1,20 @@
-import React from 'react';
+"use client";
+import React, { useEffect } from 'react';
 import { Truck, Shield, MapPin, Zap } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Services = () => {
+  useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out',
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
   const services = [
     {
       icon: <Truck className="w-8 h-8 text-blue-500" />,
@@ -29,7 +42,11 @@ const Services = () => {
     <div className="w-full bg-gray-100 py-16 md:py-20 lg:py-24 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-12 md:mb-16">
+        <div 
+          className="text-center mb-12 md:mb-16"
+          data-aos="fade-down"
+          data-aos-delay="100"
+        >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             Lawapan Truck Services
           </h2>
@@ -45,19 +62,33 @@ const Services = () => {
             <div
               key={index}
               className="bg-gradient-to-br from-blue-50 to-white rounded-3xl border-2 border-blue-200 p-8 hover:shadow-xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1"
+              data-aos="fade-up"
+              data-aos-delay={200 + (index * 100)}
             >
               {/* Icon Container */}
-              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
+              <div 
+                className="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm"
+                data-aos="zoom-in"
+                data-aos-delay={300 + (index * 100)}
+              >
                 {service.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+              <h3 
+                className="text-xl md:text-2xl font-bold text-gray-900 mb-4"
+                data-aos="fade-up"
+                data-aos-delay={350 + (index * 100)}
+              >
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+              <p 
+                className="text-gray-700 text-sm md:text-base leading-relaxed"
+                data-aos="fade-up"
+                data-aos-delay={400 + (index * 100)}
+              >
                 {service.description}
               </p>
             </div>

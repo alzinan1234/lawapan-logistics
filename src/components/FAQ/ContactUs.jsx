@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapPin, Mail, Phone, User, MessageSquare } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +13,15 @@ const ContactUs = () => {
     subject: '',
     message: ''
   });
+
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+    });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,26 +60,38 @@ const ContactUs = () => {
   return (
     <div className="w-full bg-white py-12 px-4">
       <div className="max-w-4xl mx-auto">
-        {/* Title Section */}
-        <div className="mb-6">
+        {/* Title Section with animation */}
+        <div 
+          className="mb-6"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             Contact Us
           </h1>
           <div className="w-24 h-1 bg-[#0066cc]"></div>
         </div>
 
-        {/* Subtitle */}
-        <div className="mb-8">
+        {/* Subtitle with animation */}
+        <div 
+          className="mb-8"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
           <p className="text-[#0066cc] font-medium text-base">
             Have a question? Contact Us! We respond to all inquiries.
           </p>
         </div>
 
-        {/* Contact Form */}
+        {/* Contact Form with animations */}
         <div className="mb-12">
           {/* Row 1: Name and Email */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="relative">
+            <div 
+              className="relative"
+              data-aos="fade-right"
+              data-aos-delay="200"
+            >
               <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
@@ -79,7 +102,11 @@ const ContactUs = () => {
                 className="w-full pl-11 pr-4 py-3 border-b-2 border-gray-200 focus:border-[#0066cc] outline-none transition-colors text-sm text-gray-900 placeholder-gray-400"
               />
             </div>
-            <div className="relative">
+            <div 
+              className="relative"
+              data-aos="fade-left"
+              data-aos-delay="200"
+            >
               <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="email"
@@ -94,7 +121,11 @@ const ContactUs = () => {
 
           {/* Row 2: Phone and Subject */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="relative">
+            <div 
+              className="relative"
+              data-aos="fade-right"
+              data-aos-delay="250"
+            >
               <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="tel"
@@ -105,7 +136,11 @@ const ContactUs = () => {
                 className="w-full pl-11 pr-4 py-3 border-b-2 border-gray-200 focus:border-[#0066cc] outline-none transition-colors text-sm text-gray-900 placeholder-gray-400"
               />
             </div>
-            <div className="relative">
+            <div 
+              className="relative"
+              data-aos="fade-left"
+              data-aos-delay="250"
+            >
               <MessageSquare className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
@@ -118,8 +153,12 @@ const ContactUs = () => {
             </div>
           </div>
 
-          {/* Row 3: Message */}
-          <div className="relative mb-6">
+          {/* Row 3: Message with animation */}
+          <div 
+            className="relative mb-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             <MessageSquare className="absolute left-3 top-4 w-5 h-5 text-gray-400" />
             <textarea
               name="message"
@@ -131,23 +170,30 @@ const ContactUs = () => {
             ></textarea>
           </div>
 
-          {/* Submit Button */}
-          <button
-            onClick={handleSubmit}
-            className="w-full bg-[#0066cc] text-white font-semibold py-3 rounded-lg hover:bg-[#0052a3] transition-colors shadow-md"
+          {/* Submit Button with animation */}
+          <div
+            data-aos="zoom-in"
+            data-aos-delay="350"
           >
-            Send
-          </button>
+            <button
+              onClick={handleSubmit}
+              className="w-full bg-[#0066cc] text-white font-semibold py-3 rounded-lg hover:bg-[#0052a3] transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform duration-200"
+            >
+              Send
+            </button>
+          </div>
         </div>
 
-        {/* Contact Information Cards */}
+        {/* Contact Information Cards with staggered animations */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {contactInfo.map((contact) => {
+          {contactInfo.map((contact, index) => {
             const IconComponent = contact.icon;
             return (
               <div
                 key={contact.id}
-                className="bg-gray-50 rounded-lg p-8 flex flex-col items-center text-center hover:bg-gray-100 transition-colors"
+                className="bg-gray-50 rounded-lg p-8 flex flex-col items-center text-center hover:bg-gray-100 transition-colors hover:shadow-md transform hover:-translate-y-1 transition-transform duration-200"
+                data-aos="zoom-in"
+                data-aos-delay={400 + (index * 100)}
               >
                 {/* Icon */}
                 <div className="w-14 h-14 bg-[#0066cc] rounded-full flex items-center justify-center mb-4">

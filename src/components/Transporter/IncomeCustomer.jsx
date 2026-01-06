@@ -1,7 +1,19 @@
-import React from 'react';
+"use client";
+ import React, { useEffect } from 'react';
 import { Check } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const IncomeCustomer = () => {
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
   const benefits = [
     {
       id: 1,
@@ -20,16 +32,24 @@ const IncomeCustomer = () => {
   return (
     <div className="w-full bg-white py-16 px-4">
       <div className="max-w-6xl mx-auto">
-        {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 leading-tight">
+        {/* Title with animation */}
+        <h2 
+          className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 leading-tight"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           More income for you and more<br />service for your customer
         </h2>
 
         {/* Content Container */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           
-          {/* Left Section - Laptop Mockup */}
-          <div className="flex-1 flex justify-center">
+          {/* Left Section - Laptop Mockup with animation */}
+          <div 
+            className="flex-1 flex justify-center"
+            data-aos="fade-right"
+            data-aos-delay="200"
+          >
             <div className="relative w-full max-w-md">
               {/* Laptop Screen */}
               <div className="bg-gray-100 rounded-t-lg border-4 border-gray-800 p-4 shadow-xl">
@@ -57,26 +77,26 @@ const IncomeCustomer = () => {
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
                         <div className="h-2 w-full bg-gray-200 rounded"></div>
-                        <div className="h-6 w-12 bg-green-100 rounded flex items-center justify-center">
-                          <div className="h-1.5 w-6 bg-green-500 rounded"></div>
+                        <div className="h-6 w-12 bg-blue-50 rounded flex items-center justify-center">
+                          <div className="h-1.5 w-6 bg-blue-500 rounded"></div>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="h-2 w-full bg-gray-200 rounded"></div>
-                        <div className="h-6 w-12 bg-green-100 rounded flex items-center justify-center">
-                          <div className="h-1.5 w-6 bg-green-500 rounded"></div>
+                        <div className="h-6 w-12 bg-blue-50 rounded flex items-center justify-center">
+                          <div className="h-1.5 w-6 bg-blue-500 rounded"></div>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="h-2 w-full bg-gray-200 rounded"></div>
-                        <div className="h-6 w-12 bg-green-100 rounded flex items-center justify-center">
-                          <div className="h-1.5 w-6 bg-green-500 rounded"></div>
+                        <div className="h-6 w-12 bg-blue-50 rounded flex items-center justify-center">
+                          <div className="h-1.5 w-6 bg-blue-500 rounded"></div>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="h-2 w-full bg-gray-200 rounded"></div>
-                        <div className="h-6 w-12 bg-green-100 rounded flex items-center justify-center">
-                          <div className="h-1.5 w-6 bg-green-500 rounded"></div>
+                        <div className="h-6 w-12 bg-blue-50 rounded flex items-center justify-center">
+                          <div className="h-1.5 w-6 bg-blue-500 rounded"></div>
                         </div>
                       </div>
                     </div>
@@ -97,13 +117,18 @@ const IncomeCustomer = () => {
             </div>
           </div>
 
-          {/* Right Section - Benefits List */}
+          {/* Right Section - Benefits List with staggered animations */}
           <div className="flex-1 space-y-6">
-            {benefits.map((benefit) => (
-              <div key={benefit.id} className="flex items-start gap-4">
-                {/* Check Icon Circle */}
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#c8e17f] flex items-center justify-center">
-                  <Check className="w-5 h-5 text-[#6b8e23] stroke-[3]" />
+            {benefits.map((benefit, index) => (
+              <div 
+                key={benefit.id} 
+                className="flex items-start gap-4"
+                data-aos="fade-left"
+                data-aos-delay={300 + (index * 100)}
+              >
+                {/* Check Icon Circle - Changed to blue */}
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center ring-2 ring-blue-100">
+                  <Check className="w-5 h-5 text-blue-600 stroke-[3]" />
                 </div>
 
                 {/* Benefit Text */}

@@ -1,21 +1,47 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Shield, Check } from 'lucide-react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const InsuranceProtection = () => {
+  useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out',
+      once: true,
+      offset: 100,
+    })
+  }, [])
+
   return (
     <div className="relative w-full py-9 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-700 flex items-center justify-center p-4 overflow-hidden">
       {/* Subtle background blur elements */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-1/4 w-64 h-64 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-        <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div 
+          className="absolute top-20 left-1/4 w-64 h-64 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
+          data-aos="fade-right"
+          data-aos-delay="100"
+          data-aos-duration="1000"
+        ></div>
+        <div 
+          className="absolute bottom-20 right-1/4 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
+          data-aos="fade-left"
+          data-aos-delay="100"
+          data-aos-duration="1000"
+        ></div>
       </div>
 
       {/* Main Content */}
       <div className="relative z-10 max-w-2xl mx-auto text-center space-y-8">
         
         {/* Shield Icon Container */}
-        <div className="flex justify-center mb-8">
+        <div 
+          className="flex justify-center mb-8"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+        >
           <div className="relative">
             {/* Icon Box with glassmorphism */}
             <div className="bg-blue-300/20 backdrop-blur-md border border-blue-300/40 p-8 rounded-2xl shad ow-xl">
@@ -28,17 +54,29 @@ const InsuranceProtection = () => {
         </div>
 
         {/* Heading */}
-        <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">
+        <h1 
+          className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           Insurance Protection
         </h1>
         
         {/* Description */}
-        <p className="text-base md:text-lg text-blue-50 max-w-lg mx-auto leading-relaxed drop-shadow-md font-light">
+        <p 
+          className="text-base md:text-lg text-blue-50 max-w-lg mx-auto leading-relaxed drop-shadow-md font-light"
+          data-aos="fade-up"
+          data-aos-delay="350"
+        >
           Lawaap Truck insures your goods for up to 10,000,000 FCFA per trip in partnership with Corts Assurances
         </p>
 
         {/* CTA Button */}
-        <div className="pt-6">
+        <div 
+          className="pt-6"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
           <button className="group relative inline-flex items-center gap-2 px-7 py-3 bg-transparent border-2 border-white/60 hover:border-white text-white font-semibold rounded-full backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:bg-white/10">
             <span>Get started today</span>
             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

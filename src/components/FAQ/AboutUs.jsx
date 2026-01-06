@@ -1,6 +1,19 @@
-import React from 'react';
+"use client";
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const AboutUs = () => {
+  useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out',
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
   const features = [
     'Wide Selection of Hotels: From boutique stays to 5-star resorts.',
     'User-Friendly Interface: Simple navigation and hassle-free booking.',
@@ -13,7 +26,11 @@ const AboutUs = () => {
     <div className="w-full bg-white py-12 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Title */}
-        <div className="mb-8">
+        <div 
+          className="mb-8"
+          data-aos="fade-down"
+          data-aos-delay="100"
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             About Us
           </h2>
@@ -21,7 +38,11 @@ const AboutUs = () => {
         </div>
 
         {/* Who We Are Section */}
-        <div className="mb-8">
+        <div 
+          className="mb-8"
+          data-aos="fade-right"
+          data-aos-delay="150"
+        >
           <h3 className="text-[#0066cc] font-semibold text-lg mb-3">
             Who We Are :
           </h3>
@@ -31,7 +52,11 @@ const AboutUs = () => {
         </div>
 
         {/* Our Purpose Section */}
-        <div className="mb-8">
+        <div 
+          className="mb-8"
+          data-aos="fade-left"
+          data-aos-delay="200"
+        >
           <h3 className="text-[#0066cc] font-semibold text-lg mb-3">
             Our Purpose:
           </h3>
@@ -41,13 +66,21 @@ const AboutUs = () => {
         </div>
 
         {/* Why Choose Us Section */}
-        <div>
+        <div
+          data-aos="fade-up"
+          data-aos-delay="250"
+        >
           <h3 className="text-[#0066cc] font-semibold text-lg mb-4">
             Why Choose Us?
           </h3>
           <ul className="space-y-2">
             {features.map((feature, index) => (
-              <li key={index} className="flex items-start gap-2 text-gray-600 text-sm">
+              <li 
+                key={index} 
+                className="flex items-start gap-2 text-gray-600 text-sm"
+                data-aos="fade-up"
+                data-aos-delay={300 + (index * 50)}
+              >
                 <span className="text-[#0066cc] mt-1">•</span>
                 <span className="leading-relaxed">{feature}</span>
               </li>
