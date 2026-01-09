@@ -42,7 +42,7 @@ const HeroBanner = () => {
   const heroImages = [
     {
       id: 1,
-      url: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      url: './Branded Lawapan Truck Image.jpeg',
       title: "A simple, fast, and reliable transport solution",
       description: "Simplify your logistics with Lawapan Truck. Track your shipment in real time, get secure payments, and connect with trusted transporters."
     },
@@ -77,7 +77,7 @@ const HeroBanner = () => {
           slidesPerView={1}
           loop={true}
           autoplay={{
-            delay: 3000,
+            delay: 4000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
@@ -103,11 +103,11 @@ const HeroBanner = () => {
                 }}
               >
                 {/* Gradient overlay for better text readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent"></div>
                 
                 <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
                   <div 
-                    className="max-w-2xl bg-[#0000004D] backdrop-blur-sm p-8 md:p-12 rounded-sm"
+                    className="max-w-2xl bg-[#0000004D]  p-8 md:p-12 rounded-sm"
                     data-aos="fade-right"
                     data-aos-delay="100"
                     data-aos-once="false"
