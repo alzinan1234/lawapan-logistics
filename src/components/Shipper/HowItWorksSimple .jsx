@@ -8,7 +8,7 @@ const HowItWorksSimple = () => {
   useEffect(() => {
     // Initialize AOS
     AOS.init({
-      duration: 800,
+      duration: 700,
       easing: 'ease-out',
       once: true,
       offset: 100,
