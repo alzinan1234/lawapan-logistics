@@ -18,7 +18,7 @@ export default function LoginPage() {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === 'checkbox' ? checked : value 
     }));
     if (errors[name]) {
       // Clear error on change
