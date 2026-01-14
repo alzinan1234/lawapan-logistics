@@ -57,7 +57,7 @@ export default function ProfilePage() {
                   style={{ objectFit: "cover" }}
                 />
               </div>
-              <span className="absolute bottom-0 right-0 bg-blue-500 rounded-full p-1 border-2 border-white"> {/* Adjusted border color to white */}
+              <span className="absolute bottom-0 right-0 rounded-full p-1 border-2 border-white" style={{backgroundColor: '#036BB4'}}> {/* Adjusted border color to white */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 text-white"
@@ -81,9 +81,10 @@ export default function ProfilePage() {
             <button
               className={`py-2 px-6 text-[16px] font-semibold ${
                 activeTab === "editProfile"
-                  ? "border-b-2 border-[#4B697F] text-[#4B697F]"
-                  : "text-gray-600 hover:text-gray-900" // Adjusted text color for non-active tabs
+                  ? "border-b-2 text-white"
+                  : "text-gray-600 hover:text-gray-900"
               }`}
+              style={activeTab === "editProfile" ? {borderColor: '#036BB4', color: '#036BB4'} : {}}
               onClick={() => setActiveTab("editProfile")}
             >
               Edit Profile
@@ -91,9 +92,10 @@ export default function ProfilePage() {
             <button
               className={`py-2 px-6 text-[16px] font-semibold ${
                 activeTab === "changePassword"
-                  ? "border-b-2 border-[#4B697F] text-[#4B697F]"
-                  : "text-gray-600 hover:text-gray-900" // Adjusted text color for non-active tabs
+                  ? "border-b-2 text-white"
+                  : "text-gray-600 hover:text-gray-900"
               }`}
+              style={activeTab === "changePassword" ? {borderColor: '#036BB4', color: '#036BB4'} : {}}
               onClick={() => setActiveTab("changePassword")}
             >
               Change Password
@@ -156,8 +158,10 @@ export default function ProfilePage() {
                 <div className="flex items-center justify-center mt-6">
                   <button
                     type="submit"
-                    className="bg-blue-500 text-white hover:bg-opacity-80 text-white font-bold w-full py-3 px-4 rounded-[4px] focus:outline-none focus:shadow-outline"
-                    
+                    className="text-white font-bold w-full py-3 px-4 rounded-[4px] focus:outline-none focus:shadow-outline transition-colors"
+                    style={{backgroundColor: '#036BB4'}}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#025191'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#036BB4'}
                   >
                     Save Changes
                   </button>

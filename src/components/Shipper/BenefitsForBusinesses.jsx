@@ -17,22 +17,22 @@ const BenefitsForBusinesses = () => {
 
   const benefits = [
     {
-      icon: <Clock className="w-6 h-6 text-blue-500" />,
+      icon: <Clock className="w-6 h-6" style={{color: '#036BB4'}} />,
       title: "Save Time",
       description: "Ship in just 3 clicks"
     },
     {
-      icon: <Truck className="w-6 h-6 text-blue-500" />,
+      icon: <Truck className="w-6 h-6" style={{color: '#036BB4'}} />,
       title: "Reliable Trucks",
       description: "Verified transporters only"
     },
     {
-      icon: <BarChart3 className="w-6 h-6 text-blue-500" />,
+      icon: <BarChart3 className="w-6 h-6" style={{color: '#036BB4'}} />,
       title: "Track Online",
       description: "Monitor every step"
     },
     {
-      icon: <Shield className="w-6 h-6 text-blue-500" />,
+      icon: <Shield className="w-6 h-6" style={{color: '#036BB4'}} />,
       title: "Insured",
       description: "Full cargo protection"
     }
@@ -63,7 +63,10 @@ const BenefitsForBusinesses = () => {
             >
               {/* Icon Container */}
               <div 
-                className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 group-hover:scale-110 transition-all duration-300"
+                className="w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300"
+                style={{backgroundColor: 'rgba(3, 107, 180, 0.05)'}}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(3, 107, 180, 0.1)'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(3, 107, 180, 0.05)'}
                 data-aos="zoom-in"
                 data-aos-delay={300 + (index * 100)}
               >

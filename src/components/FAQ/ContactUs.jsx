@@ -69,7 +69,7 @@ const ContactUs = () => {
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             Contact Us
           </h1>
-          <div className="w-24 h-1 bg-[#0066cc]"></div>
+          <div className="w-24 h-1" style={{backgroundColor: '#036BB4'}}></div>
         </div>
 
         {/* Subtitle with animation */}
@@ -78,7 +78,7 @@ const ContactUs = () => {
           data-aos="fade-up"
           data-aos-delay="150"
         >
-          <p className="text-[#0066cc] font-medium text-base">
+          <p className="font-medium text-base" style={{color: '#036BB4'}}>
             Have a question? Contact Us! We respond to all inquiries.
           </p>
         </div>
@@ -99,7 +99,10 @@ const ContactUs = () => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your name"
-                className="w-full pl-11 pr-4 py-3 border-b-2 border-gray-200 focus:border-[#0066cc] outline-none transition-colors text-sm text-gray-900 placeholder-gray-400"
+                className="w-full pl-11 pr-4 py-3 border-b-2 border-gray-200 outline-none transition-colors text-sm text-gray-900 placeholder-gray-400"
+                style={{}}
+                onFocus={(e) => e.target.style.borderBottomColor = '#036BB4'}
+                onBlur={(e) => e.target.style.borderBottomColor = 'rgb(229, 231, 235)'}
               />
             </div>
             <div 
@@ -114,7 +117,10 @@ const ContactUs = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Email address"
-                className="w-full pl-11 pr-4 py-3 border-b-2 border-gray-200 focus:border-[#0066cc] outline-none transition-colors text-sm text-gray-900 placeholder-gray-400"
+                className="w-full pl-11 pr-4 py-3 border-b-2 border-gray-200 outline-none transition-colors text-sm text-gray-900 placeholder-gray-400"
+                style={{}}
+                onFocus={(e) => e.target.style.borderBottomColor = '#036BB4'}
+                onBlur={(e) => e.target.style.borderBottomColor = 'rgb(229, 231, 235)'}
               />
             </div>
           </div>
@@ -133,7 +139,10 @@ const ContactUs = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Your phone number"
-                className="w-full pl-11 pr-4 py-3 border-b-2 border-gray-200 focus:border-[#0066cc] outline-none transition-colors text-sm text-gray-900 placeholder-gray-400"
+                className="w-full pl-11 pr-4 py-3 border-b-2 border-gray-200 outline-none transition-colors text-sm text-gray-900 placeholder-gray-400"
+                style={{}}
+                onFocus={(e) => e.target.style.borderBottomColor = '#036BB4'}
+                onBlur={(e) => e.target.style.borderBottomColor = 'rgb(229, 231, 235)'}
               />
             </div>
             <div 
@@ -148,7 +157,10 @@ const ContactUs = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 placeholder="Subject"
-                className="w-full pl-11 pr-4 py-3 border-b-2 border-gray-200 focus:border-[#0066cc] outline-none transition-colors text-sm text-gray-900 placeholder-gray-400"
+                className="w-full pl-11 pr-4 py-3 border-b-2 border-gray-200 outline-none transition-colors text-sm text-gray-900 placeholder-gray-400"
+                style={{}}
+                onFocus={(e) => e.target.style.borderBottomColor = '#036BB4'}
+                onBlur={(e) => e.target.style.borderBottomColor = 'rgb(229, 231, 235)'}
               />
             </div>
           </div>
@@ -166,7 +178,10 @@ const ContactUs = () => {
               onChange={handleChange}
               placeholder="Your message"
               rows="4"
-              className="w-full pl-11 pr-4 py-3 border-b-2 border-gray-200 focus:border-[#0066cc] outline-none transition-colors text-sm text-gray-900 placeholder-gray-400 resize-none"
+              className="w-full pl-11 pr-4 py-3 border-b-2 border-gray-200 outline-none transition-colors text-sm text-gray-900 placeholder-gray-400 resize-none"
+              style={{}}
+              onFocus={(e) => e.target.style.borderBottomColor = '#036BB4'}
+              onBlur={(e) => e.target.style.borderBottomColor = 'rgb(229, 231, 235)'}
             ></textarea>
           </div>
 
@@ -177,7 +192,10 @@ const ContactUs = () => {
           >
             <button
               onClick={handleSubmit}
-              className="w-full bg-[#0066cc] text-white font-semibold py-3 rounded-lg hover:bg-[#0052a3] transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform duration-200"
+              className="w-full text-white font-semibold py-3 rounded-lg transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform duration-200"
+              style={{backgroundColor: '#036BB4'}}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#0052a3'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = '#036BB4'}
             >
               Send
             </button>
@@ -196,7 +214,7 @@ const ContactUs = () => {
                 data-aos-delay={400 + (index * 100)}
               >
                 {/* Icon */}
-                <div className="w-14 h-14 bg-[#0066cc] rounded-full flex items-center justify-center mb-4">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4" style={{backgroundColor: '#036BB4'}}>
                   <IconComponent className="w-7 h-7 text-white" />
                 </div>
 

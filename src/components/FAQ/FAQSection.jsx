@@ -76,7 +76,7 @@ const FAQSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             Frequently Asked Questions
           </h2>
-          <div className="w-24 h-1 bg-[#0066cc]"></div>
+          <div className="w-24 h-1" style={{backgroundColor: '#036BB4'}}></div>
         </div>
 
         {/* Section Title */}
@@ -85,7 +85,7 @@ const FAQSection = () => {
           data-aos="fade-right"
           data-aos-delay="150"
         >
-          <h3 className="text-[#0066cc] font-medium text-base">
+          <h3 className="font-medium text-base" style={{color: '#036BB4'}}>
             Shipper FAQ :
           </h3>
         </div>
@@ -105,13 +105,14 @@ const FAQSection = () => {
                 className="w-full flex items-center justify-between gap-4 text-left group py-4 hover:bg-gray-50 transition-colors"
               >
                 <div className="flex items-center gap-3 flex-1">
-                  <MessageSquare className="w-5 h-5 text-[#0066cc] flex-shrink-0" />
+                  <MessageSquare className="w-5 h-5 flex-shrink-0" style={{color: '#036BB4'}} />
                   <span className="text-gray-900 text-sm font-normal">
                     {item.question}
                   </span>
                 </div>
                 <div 
-                  className="flex-shrink-0 w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center transition-transform duration-300"
+                  className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-300"
+                  style={{backgroundColor: '#036BB4'}}
                   data-aos="zoom-in"
                   data-aos-delay={250 + (index * 50)}
                 >

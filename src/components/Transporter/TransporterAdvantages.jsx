@@ -66,7 +66,13 @@ const TransporterAdvantages = () => {
             return (
               <div
                 key={advantage.id}
-                className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl p-8 hover:border-blue-300 transition-all duration-300 hover:shadow-lg"
+                className="rounded-2xl p-8 transition-all duration-300 hover:shadow-lg"
+                style={{
+                  background: `linear-gradient(to bottom right, rgba(3, 107, 180, 0.05), white)`,
+                  border: `2px solid rgba(3, 107, 180, 0.2)`
+                }}
+                onMouseEnter={(e) => {e.currentTarget.style.borderColor = '#036BB4';}}
+                onMouseLeave={(e) => {e.currentTarget.style.borderColor = 'rgba(3, 107, 180, 0.2)';}}
                 data-aos="fade-up"
                 data-aos-delay={200 + (index * 100)}
               >
@@ -76,8 +82,8 @@ const TransporterAdvantages = () => {
                   data-aos="zoom-in"
                   data-aos-delay={300 + (index * 100)}
                 >
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center border-2 border-blue-200">
-                    <IconComponent className="w-6 h-6 text-[#0066cc]" />
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center border-2" style={{borderColor: 'rgba(3, 107, 180, 0.3)'}}>
+                    <IconComponent className="w-6 h-6" style={{color: '#036BB4'}} />
                   </div>
                 </div>
 

@@ -217,7 +217,7 @@ const ActiveShipmentsDashboard = () => {
               </div>
 
               {/* View Full Details Button */}
-              <button className="w-full mt-6 py-3 border-2 border-blue-500 text-blue-600 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-all">
+              <button className="w-full mt-6 py-3 border-2 border-[#036BB4] text-black  rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-all">
                 View full details
                 <ChevronRight className="w-5 h-5" />
               </button>

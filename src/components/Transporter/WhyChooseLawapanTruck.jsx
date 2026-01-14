@@ -44,7 +44,7 @@ const FeatureCard = ({ title, description, index, side }) => (
   >
     <div className="flex-shrink-0 mt-1">
       {/* Changed icon color to blue */}
-      <CheckCircle className="w-6 h-6 text-blue-500" /> 
+      <CheckCircle className="w-6 h-6" style={{color: '#036BB4'}} /> 
     </div>
     <div>
       <h3 className="font-semibold text-gray-900 text-sm sm:text-base mb-1">
@@ -97,7 +97,8 @@ const WhyChooseLawapanTruck = () => {
 
           {/* Divider with animation */}
           <div 
-            className="hidden md:block absolute left-1/2 top-0 bottom-0 transform -translate-x-1/2 w-px bg-gray-300"
+            className="hidden md:block absolute left-1/2 top-0 bottom-0 transform -translate-x-1/2 w-px"
+            style={{backgroundColor: '#036BB4'}}
             data-aos="zoom-y-out"
             data-aos-delay="400"
           ></div>

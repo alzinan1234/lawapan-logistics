@@ -110,7 +110,7 @@ const SafelyShipInsurance = () => {
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
                 Lawapantruck is hiring
               </h2>
-              <div className="w-40 h-1.5 bg-[#0066cc]"></div>
+              <div className="w-40 h-1.5" style={{backgroundColor: '#036BB4'}}></div>
             </div>
 
             <div 
@@ -118,7 +118,7 @@ const SafelyShipInsurance = () => {
               data-aos="fade-up"
               data-aos-delay="150"
             >
-              <h3 className="text-[#0066cc] font-medium text-base mb-4">
+              <h3 className="font-medium text-base mb-4" style={{color: '#036BB4'}}>
                 We are currently looking for :
               </h3>
             </div>
@@ -137,7 +137,8 @@ const SafelyShipInsurance = () => {
           {/* FAQ Section */}
           <div className="mb-16">
             <h3 
-              className="text-[#0066cc] font-medium text-base mb-8"
+              className="font-medium text-base mb-8"
+              style={{color: '#036BB4'}}
               data-aos="fade-up"
               data-aos-delay="250"
             >
@@ -157,12 +158,12 @@ const SafelyShipInsurance = () => {
                     className="w-full flex items-center justify-between gap-4 text-left group py-5 hover:bg-gray-50 transition-colors"
                   >
                     <div className="flex items-center gap-3 flex-1">
-                      <MessageSquare className="w-5 h-5 text-[#0066cc] flex-shrink-0" />
+                      <MessageSquare className="w-5 h-5 flex-shrink-0" style={{color: '#036BB4'}} />
                       <span className="text-gray-900 text-base font-normal">
                         {item.question}
                       </span>
                     </div>
-                    <div className="flex-shrink-0 w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center" style={{backgroundColor: '#036BB4'}}>
                       {openQuestionId === item.id ? (
                         <ChevronUp className="w-4 h-4 text-white" />
                       ) : (
@@ -196,7 +197,7 @@ const SafelyShipInsurance = () => {
                   data-aos="zoom-in"
                   data-aos-delay={500 + (index * 100)}
                 >
-                  <div className="w-16 h-16 bg-[#0066cc] rounded-full flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4" style={{backgroundColor: '#036BB4'}}>
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-gray-900 font-semibold text-lg mb-2">

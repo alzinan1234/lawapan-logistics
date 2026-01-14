@@ -179,7 +179,7 @@ const LastFreightOffers = () => {
                 data-aos="zoom-in"
                 data-aos-delay={500 + (index * 100)}
               >
-                <button className="bg-[#0066cc] hover:bg-[#0052a3] text-white font-semibold px-6 py-2 rounded-full transition-colors duration-200 text-sm whitespace-nowrap">
+                <button className="text-white font-semibold px-6 py-2 rounded-full transition-colors duration-200 text-sm whitespace-nowrap" style={{backgroundColor: '#036BB4'}} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0052a3'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#036BB4'}>
                   257
                 </button>
               </div>

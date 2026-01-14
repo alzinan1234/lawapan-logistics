@@ -7,7 +7,10 @@ const MonthDropdown = ({ month, setMonth, show, setShow, months }) => (
   <div className="relative">
     <button
       onClick={() => setShow(!show)}
-      className="flex items-center gap-2 px-4 py-1.5 bg-blue-600 text-white rounded-full text-sm font-medium hover:bg-blue-700 transition-colors"
+      className="flex items-center gap-2 px-4 py-1.5 text-white rounded-full text-sm font-medium transition-colors"
+      style={{backgroundColor: '#036BB4'}}
+      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#025191'}
+      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#036BB4'}
     >
       {month}
       <ChevronDown
@@ -30,8 +33,9 @@ const MonthDropdown = ({ month, setMonth, show, setShow, months }) => (
                 setShow(false);
               }}
               className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition-colors ${
-                m === month ? 'bg-blue-50 text-blue-600 font-medium' : 'text-gray-700'
+                m === month ? 'font-medium' : 'text-gray-700'
               }`}
+              style={m === month ? {backgroundColor: '#f0f7ff', color: '#036BB4'} : {}}
             >
               {m}
             </button>
@@ -223,10 +227,13 @@ const ShipmentStats = () => {
       <div className="flex gap-4 p-6 bg-gray-50 ">
         {/* Create Shipment Card */}
         <div 
-          className="bg-white border-2 border-dashed border-gray-300 rounded-2xl p-8 flex items-center justify-center hover:border-blue-400 hover:bg-blue-50/30 transition-all cursor-pointer group min-w-[200px]"
+          className="bg-white border-2 border-dashed border-gray-300 rounded-2xl p-8 flex items-center justify-center transition-all cursor-pointer group min-w-[200px]"
+          style={{}}
+          onMouseEnter={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.backgroundColor = '#f0f7ff';}}
+          onMouseLeave={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.backgroundColor = 'white';}}
           onClick={handleCreateShipment}
         >
-          <div className="flex items-center gap-3 text-gray-500 group-hover:text-blue-600 transition-colors">
+          <div className="flex items-center gap-3 text-gray-500 transition-colors" style={{}} onMouseEnter={(e) => e.parentElement.style.color = '#036BB4'} onMouseLeave={(e) => e.parentElement.style.color = '#6b7280'}>
             <Plus className="w-6 h-6" />
             <span className="text-lg font-medium">Create Shipment</span>
           </div>
@@ -299,15 +306,15 @@ const ShipmentStats = () => {
                   <div>
                     <h1 className="text-2xl font-bold text-gray-900">CREATE SHIPMENT</h1>
                     <div className="flex items-center gap-4 mt-4">
-                      <div className={`flex items-center gap-2 ${currentStep === 1 ? 'text-blue-600' : 'text-gray-400'}`}>
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep === 1 ? 'bg-blue-600 text-white' : 'bg-gray-100'}`}>
+                      <div className={`flex items-center gap-2 ${currentStep === 1 ? 'font-medium' : 'text-gray-400'}`} style={currentStep === 1 ? {color: '#036BB4'} : {}}>
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white ${currentStep === 1 ? '' : 'bg-gray-100'}`} style={currentStep === 1 ? {backgroundColor: '#036BB4'} : {}}>
                           1
                         </div>
                         <span className="font-medium">Basic Information</span>
                       </div>
                       <ArrowRight className="w-4 h-4 text-gray-400" />
-                      <div className={`flex items-center gap-2 ${currentStep === 2 ? 'text-blue-600' : 'text-gray-400'}`}>
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep === 2 ? 'bg-blue-600 text-white' : 'bg-gray-100'}`}>
+                      <div className={`flex items-center gap-2 ${currentStep === 2 ? 'font-medium' : 'text-gray-400'}`} style={currentStep === 2 ? {color: '#036BB4'} : {}}>
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white ${currentStep === 2 ? '' : 'bg-gray-100'}`} style={currentStep === 2 ? {backgroundColor: '#036BB4'} : {}}>
                           2
                         </div>
                         <span className="font-medium">Pickup & Delivery</span>
@@ -338,7 +345,10 @@ const ShipmentStats = () => {
                         value={shipmentData.title}
                         onChange={handleInputChange}
                         placeholder="Ship 12 Pallets of Rice"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900 placeholder-gray-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900 placeholder-gray-500"
+                        style={{}}
+                        onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                        onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                       />
                     </div>
 
@@ -352,7 +362,10 @@ const ShipmentStats = () => {
                           name="category"
                           value={shipmentData.category}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900"
+                          style={{}}
+                          onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                          onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                         >
                           {categories.map((category) => (
                             <option key={category} value={category}>
@@ -371,7 +384,10 @@ const ShipmentStats = () => {
                           value={shipmentData.description}
                           onChange={handleInputChange}
                           placeholder="12 shrink-wrapped pallets, non-fragile"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900 placeholder-gray-500"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900 placeholder-gray-500"
+                          style={{}}
+                          onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                          onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                         />
                       </div>
                     </div>
@@ -388,7 +404,10 @@ const ShipmentStats = () => {
                           value={shipmentData.weight}
                           onChange={handleInputChange}
                           placeholder="2,300"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900 placeholder-gray-500"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900 placeholder-gray-500"
+                          style={{}}
+                          onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                          onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                         />
                       </div>
                       <div>
@@ -399,7 +418,10 @@ const ShipmentStats = () => {
                           name="packagingType"
                           value={shipmentData.packagingType}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900"
+                          style={{}}
+                          onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                          onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                         >
                           {packagingTypes.map((type) => (
                             <option key={type} value={type}>
@@ -422,7 +444,10 @@ const ShipmentStats = () => {
                           value={shipmentData.length}
                           onChange={handleInputChange}
                           placeholder="Length"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900 placeholder-gray-500"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900 placeholder-gray-500"
+                          style={{}}
+                          onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                          onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                         />
                         <input
                           type="number"
@@ -430,7 +455,10 @@ const ShipmentStats = () => {
                           value={shipmentData.width}
                           onChange={handleInputChange}
                           placeholder="Width"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900 placeholder-gray-500"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900 placeholder-gray-500"
+                          style={{}}
+                          onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                          onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                         />
                         <input
                           type="number"
@@ -438,7 +466,10 @@ const ShipmentStats = () => {
                           value={shipmentData.height}
                           onChange={handleInputChange}
                           placeholder="Height"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900 placeholder-gray-500"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900 placeholder-gray-500"
+                          style={{}}
+                          onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                          onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                         />
                       </div>
                     </div>
@@ -448,7 +479,7 @@ const ShipmentStats = () => {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Upload images
                       </label>
-                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
+                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center transition-colors" style={{}} onMouseEnter={(e) => {e.currentTarget.style.borderColor = '#036BB4';}} onMouseLeave={(e) => {e.currentTarget.style.borderColor = '#d1d5db';}}>
                         <input
                           type="file"
                           id="image-upload"
@@ -500,7 +531,10 @@ const ShipmentStats = () => {
                     <button
                       type="button"
                       onClick={handleNextStep}
-                      className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+                      className="px-6 py-3 text-white font-medium rounded-lg transition-colors flex items-center gap-2"
+                      style={{backgroundColor: '#036BB4'}}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#025191'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#036BB4'}
                     >
                       Next <ArrowRight className="w-4 h-4" />
                     </button>
@@ -523,7 +557,10 @@ const ShipmentStats = () => {
                         onChange={handleInputChange}
                         placeholder="Enter full pickup address"
                         rows="3"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900 placeholder-gray-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900 placeholder-gray-500"
+                        style={{}}
+                        onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                        onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                       />
                     </div>
 
@@ -538,7 +575,10 @@ const ShipmentStats = () => {
                         onChange={handleInputChange}
                         placeholder="Enter full delivery address"
                         rows="3"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900 placeholder-gray-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900 placeholder-gray-500"
+                        style={{}}
+                        onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                        onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                       />
                     </div>
 
@@ -553,7 +593,10 @@ const ShipmentStats = () => {
                           name="pickupDate"
                           value={shipmentData.pickupDate}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900"
+                          style={{}}
+                          onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                          onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                         />
                         <p className="text-sm text-gray-500 mt-1">Date with 2 days buffer</p>
                       </div>
@@ -566,7 +609,10 @@ const ShipmentStats = () => {
                           name="deliveryDate"
                           value={shipmentData.deliveryDate}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900"
+                          style={{}}
+                          onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                          onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                         />
                       </div>
                     </div>
@@ -584,7 +630,10 @@ const ShipmentStats = () => {
                           value={formatNumber(shipmentData.budget)}
                           onChange={handleBudgetChange}
                           placeholder="200,000"
-                          className="w-full pl-8 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900 placeholder-gray-500"
+                          className="w-full pl-8 px-4 py-3 border border-gray-300 rounded-lg transition-colors text-gray-900 placeholder-gray-500"
+                          style={{}}
+                          onFocus={(e) => {e.currentTarget.style.borderColor = '#036BB4'; e.currentTarget.style.boxShadow = '0 0 0 2px #f0f7ff';}}
+                          onBlur={(e) => {e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.boxShadow = 'none';}}
                         />
                       </div>
                     </div>
@@ -595,13 +644,19 @@ const ShipmentStats = () => {
                     <button
                       type="button"
                       onClick={handlePrevStep}
-                      className="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-2"
+                      className="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg transition-colors flex items-center gap-2"
+                      style={{}}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                     >
                       <ArrowLeft className="w-4 h-4" /> Back
                     </button>
                     <button
                       type="submit"
-                      className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                      className="px-6 py-3 text-white font-medium rounded-lg transition-colors"
+                      style={{backgroundColor: '#036BB4'}}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#025191'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#036BB4'}
                     >
                       Publish
                     </button>

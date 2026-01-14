@@ -50,7 +50,7 @@ const InvoicesPage = () => {
       <div className="bg-white rounded-lg overflow-hidden border border-gray-200">
         <table className="w-full">
           <thead>
-            <tr className="bg-blue-600 text-white">
+            <tr className="bg-[#036BB4] text-white">
               <th className="text-left py-3 px-6 text-sm font-semibold">Invoice No.</th>
               <th className="text-left py-3 px-6 text-sm font-semibold">Shipment Title</th>
               <th className="text-left py-3 px-6 text-sm font-semibold">Transporter</th>

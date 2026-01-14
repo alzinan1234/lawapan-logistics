@@ -81,7 +81,7 @@ const ActiveShipments = () => {
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="bg-blue-600 text-white">
+            <tr className="bg-[#036BB4] text-white">
               <th className="text-left py-3 px-6 text-sm font-semibold">Shipment id</th>
               <th className="text-left py-3 px-6 text-sm font-semibold">Shipment title</th>
               <th className="text-left py-3 px-6 text-sm font-semibold">Pickup – Delivery</th>
@@ -127,20 +127,24 @@ const ActiveShipments = () => {
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-end  gap-2 py-6">
-        <button className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50">
-          <ChevronLeft className="w-4 h-4 text-black" />
-        </button>
-        <button className="w-8 h-8 flex items-center justify-center bg-blue-600 text-white rounded font-medium">1</button>
-        <button className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50 text-black">2</button>
-        <button className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50 text-black">3</button>
-        <button className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50 text-black">4</button>
-        <span className="px-2 text-black">...</span>
-        <button className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50 text-black">30</button>
-        <button className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50">
-          <ChevronRight className="w-4 h-4 text-black" />
-        </button>
-      </div>
+   <div className="flex items-center justify-end gap-2 mt-8">
+              <button className="w-10 h-10 border border-[#036BB4] rounded-full flex items-center justify-center text-[#036BB4]">
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              {[1, 2, 3, 4, '...', 30].map((page, i) => (
+                <button 
+                  key={i}
+                  className={`w-10 h-10 rounded text-sm font-medium transition-colors ${
+                    page === 1 ? 'bg-[#036BB4] text-white shadow-md' : 'text-gray-500 hover:bg-gray-100'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+              <button className="w-10 h-10 border border-[#036BB4] rounded-full flex items-center justify-center text-[#036BB4]">
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
     </div>
   );
 };

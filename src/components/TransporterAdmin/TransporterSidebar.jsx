@@ -51,7 +51,7 @@ const TransporterSidebar = ({ isOpen, setIsOpen }) => {
         {/* Header Section */}
         <div className={`flex items-center h-16 border-b border-[#D6D6D6] flex-shrink-0 transition-all duration-300 ${isOpen ? "px-6 justify-between" : "justify-center"}`}>
           {isOpen && (
-            <span className="font-bold text-blue-600 text-lg whitespace-nowrap overflow-hidden">
+            <span className="font-bold text-[#036BB4] text-lg whitespace-nowrap overflow-hidden">
               LAWAPAN
             </span>
           )}
@@ -73,7 +73,7 @@ const TransporterSidebar = ({ isOpen, setIsOpen }) => {
                 href={href}
                 className={`flex items-center h-12 rounded-lg transition-all relative group ${
                   isActive
-                    ? "bg-blue-600 text-white shadow-md shadow-blue-200"
+                    ? "bg-[#036BB4] text-white shadow-md shadow-blue-200"
                     : "text-gray-600 hover:bg-gray-50 hover:text-blue-600"
                 } ${!isOpen ? "justify-center" : "px-3"}`}
               >
@@ -135,7 +135,7 @@ const TransporterSidebar = ({ isOpen, setIsOpen }) => {
                       href={href}
                       className={`flex items-center px-3 py-2 rounded-md text-xs font-medium transition-all ${
                         isActive
-                          ? "bg-blue-600 text-white shadow-md"
+                          ? "bg-[#036BB4] text-white shadow-md"
                           : "text-gray-500 hover:text-blue-600 hover:bg-white"
                       }`}
                     >

@@ -11,7 +11,10 @@ const MonthDropdown = ({ month, setMonth, show, setShow }) => (
   <div className="relative">
     <button
       onClick={() => setShow(!show)}
-      className="flex items-center gap-1.5 px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-medium hover:bg-blue-700 transition-colors"
+      className="flex items-center gap-1.5 px-3 py-1 text-white rounded-full text-xs font-medium transition-colors"
+      style={{backgroundColor: '#036BB4'}}
+      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#025191'}
+      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#036BB4'}
     >
       {month}
       <ChevronDown className={`w-3.5 h-3.5 transition-transform ${show ? 'rotate-180' : ''}`} />
@@ -32,8 +35,9 @@ const MonthDropdown = ({ month, setMonth, show, setShow }) => (
                 setShow(false);
               }}
               className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-100 transition-colors ${
-                m === month ? 'bg-blue-50 text-blue-600 font-medium' : 'text-gray-700'
+                m === month ? 'font-medium' : 'text-gray-700'
               }`}
+              style={m === month ? {backgroundColor: '#f0f7ff', color: '#036BB4'} : {}}
             >
               {m}
             </button>

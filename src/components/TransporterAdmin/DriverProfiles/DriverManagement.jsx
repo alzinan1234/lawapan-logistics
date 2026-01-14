@@ -28,9 +28,9 @@ export default function DriverManagement() {
             />
           </div>
           {/* Filter Icon Button */}
-          <button className="p-2 bg-[#007bff] text-white rounded-lg hover:bg-blue-600 transition">
+          {/* <button className="p-2 bg-[#007bff] text-white rounded-lg hover:bg-blue-600 transition">
             <SlidersHorizontal size={20} />
-          </button>
+          </button> */}
         </div>
       </div>
 

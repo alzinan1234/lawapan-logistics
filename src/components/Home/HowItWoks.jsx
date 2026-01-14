@@ -95,9 +95,9 @@ const HowItWorks = () => {
                   />
                   <defs>
                     <linearGradient id="blueGradient" x1="0" y1="0" x2="335" y2="239">
-                      <stop offset="0%" stopColor="#93C5FD" />
-                      <stop offset="50%" stopColor="#60A5FA" />
-                      <stop offset="100%" stopColor="#93C5FD" />
+                      <stop offset="0%" stopColor="#036BB4" />
+                      <stop offset="50%" stopColor="##036BB4" />
+                      <stop offset="100%" stopColor="#036BB4" />
                     </linearGradient>
                   </defs>
                 </svg>

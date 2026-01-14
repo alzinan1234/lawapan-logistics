@@ -34,7 +34,7 @@ const AboutUs = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             About Us
           </h2>
-          <div className="w-24 h-1 bg-[#0066cc]"></div>
+          <div className="w-24 h-1" style={{backgroundColor: '#036BB4'}}></div>
         </div>
 
         {/* Who We Are Section */}
@@ -43,7 +43,7 @@ const AboutUs = () => {
           data-aos="fade-right"
           data-aos-delay="150"
         >
-          <h3 className="text-[#0066cc] font-semibold text-lg mb-3">
+          <h3 className="font-semibold text-lg mb-3" style={{color: '#036BB4'}}>
             Who We Are :
           </h3>
           <p className="text-gray-600 text-sm leading-relaxed">
@@ -57,7 +57,7 @@ const AboutUs = () => {
           data-aos="fade-left"
           data-aos-delay="200"
         >
-          <h3 className="text-[#0066cc] font-semibold text-lg mb-3">
+          <h3 className="font-semibold text-lg mb-3" style={{color: '#036BB4'}}>
             Our Purpose:
           </h3>
           <p className="text-gray-600 text-sm leading-relaxed">
@@ -70,7 +70,7 @@ const AboutUs = () => {
           data-aos="fade-up"
           data-aos-delay="250"
         >
-          <h3 className="text-[#0066cc] font-semibold text-lg mb-4">
+          <h3 className="font-semibold text-lg mb-4" style={{color: '#036BB4'}}>
             Why Choose Us?
           </h3>
           <ul className="space-y-2">
@@ -81,7 +81,7 @@ const AboutUs = () => {
                 data-aos="fade-up"
                 data-aos-delay={300 + (index * 50)}
               >
-                <span className="text-[#0066cc] mt-1">•</span>
+                <span style={{color: '#036BB4'}} className="mt-1">•</span>
                 <span className="leading-relaxed">{feature}</span>
               </li>
             ))}

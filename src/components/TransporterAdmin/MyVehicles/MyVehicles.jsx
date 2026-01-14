@@ -18,7 +18,7 @@ export default function MyVehicles() {
         <h1 className="text-2xl font-bold text-gray-800">My Vehicles</h1>
         
         <div className="flex gap-3 w-full md:w-auto">
-          <button className="flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-2 rounded-xl font-bold hover:bg-blue-100 transition">
+          <button className="flex items-center gap-2 bg-blue-50 text-[#036BB4] px-4 py-2 rounded-xl font-bold hover:bg-blue-100 transition">
             <Plus size={18} /> Add Vehicle
           </button>
           <div className="relative flex-1 md:flex-none">
@@ -60,15 +60,24 @@ export default function MyVehicles() {
       </div>
 
       {/* Pagination (Same as Image 2) */}
-      <div className="flex justify-center items-center gap-2 mt-12">
-        <button className="p-2 border border-gray-200 rounded-full text-gray-400 hover:bg-white"><ChevronLeft size={20}/></button>
-        <button className="w-10 h-10 bg-blue-600 text-white rounded-xl font-bold shadow-lg shadow-blue-100">1</button>
-        <button className="w-10 h-10 text-gray-400 font-bold hover:bg-gray-100 rounded-xl transition">2</button>
-        <button className="w-10 h-10 text-gray-400 font-bold hover:bg-gray-100 rounded-xl transition">3</button>
-        <span className="px-2 text-gray-300">...</span>
-        <button className="w-10 h-10 text-gray-400 font-bold hover:bg-gray-100 rounded-xl transition">30</button>
-        <button className="p-2 border border-gray-200 rounded-full text-gray-400 hover:bg-white"><ChevronRight size={20}/></button>
-      </div>
+       <div className="flex items-center justify-end gap-2 mt-8">
+              <button className="w-10 h-10 border border-[#036BB4] rounded-full flex items-center justify-center text-[#036BB4]">
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              {[1, 2, 3, 4, '...', 30].map((page, i) => (
+                <button 
+                  key={i}
+                  className={`w-10 h-10 rounded text-sm font-medium transition-colors ${
+                    page === 1 ? 'bg-[#036BB4] text-white shadow-md' : 'text-gray-500 hover:bg-gray-100'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+              <button className="w-10 h-10 border border-[#036BB4] rounded-full flex items-center justify-center text-[#036BB4]">
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
     </div>
   );
 }

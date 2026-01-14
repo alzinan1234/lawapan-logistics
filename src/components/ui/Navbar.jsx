@@ -37,47 +37,31 @@ const Navbar = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="relative group py-2">
-                <span className={`font-medium transition-colors duration-300 ${isActive('/') ? 'text-blue-600' : 'text-gray-700 group-hover:text-blue-600'}`}>
-                  Home
-                </span>
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform origin-left transition-transform duration-300 ${isActive('/') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-              </Link>
-              <Link href="/shipper" className="relative group py-2">
-                <span className={`font-medium transition-colors duration-300 ${isActive('/shipper') ? 'text-blue-600' : 'text-gray-700 group-hover:text-blue-600'}`}>
-                  Shipper
-                </span>
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform origin-left transition-transform duration-300 ${isActive('/shipper') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-              </Link>
-              <Link href="/transporter" className="relative group py-2">
-                <span className={`font-medium transition-colors duration-300 ${isActive('/transporter') ? 'text-blue-600' : 'text-gray-700 group-hover:text-blue-600'}`}>
-                  Transporter
-                </span>
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform origin-left transition-transform duration-300 ${isActive('/transporter') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-              </Link>
-              <Link href="/faq" className="relative group py-2">
-                <span className={`font-medium transition-colors duration-300 ${isActive('/faq') ? 'text-blue-600' : 'text-gray-700 group-hover:text-blue-600'}`}>
-                  FAQ
-                </span>
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform origin-left transition-transform duration-300 ${isActive('/faq') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-              </Link>
-              <Link href="/dashboard/Shipper" className="relative group py-2">
-                <span className={`font-medium transition-colors duration-300 ${isActive('/dashboard/Shipper') ? 'text-blue-600' : 'text-gray-700 group-hover:text-blue-600'}`}>
-                  Dashboard
-                </span>
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform origin-left transition-transform duration-300 ${isActive('/dashboard/Shipper') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-              </Link>
+              {[
+                { name: 'Home', path: '/' },
+                { name: 'Shipper', path: '/shipper' },
+                { name: 'Transporter', path: '/transporter' },
+                { name: 'FAQ', path: '/faq' },
+                { name: 'Dashboard', path: '/dashboard/Shipper' },
+              ].map((link) => (
+                <Link key={link.path} href={link.path} className="relative group py-2">
+                  <span className={`font-medium transition-colors duration-300 ${isActive(link.path) ? 'text-[#036BB4]' : 'text-gray-700 group-hover:text-[#036BB4]'}`}>
+                    {link.name}
+                  </span>
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#036BB4] transform origin-left transition-transform duration-300 ${isActive(link.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                </Link>
+              ))}
             </div>
 
             {/* Desktop Auth Buttons */}
             <div className="hidden md:flex items-center space-x-4">
               <Link href="/signup">
-                <button className="px-6 py-2 text-blue-600 font-medium border border-blue-600 rounded-full hover:bg-blue-50 transform hover:scale-105 transition-all duration-300">
+                <button className="px-6 py-2 text-[#036BB4] font-medium border border-[#036BB4] rounded-full hover:bg-blue-50 transform hover:scale-105 transition-all duration-300">
                   Sign Up
                 </button>
               </Link>
               <Link href="/login">
-                <button className="px-6 py-2 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-700 transform hover:scale-105 hover:shadow-lg transition-all duration-300">
+                <button className="px-6 py-2 bg-[#036BB4] text-white font-medium rounded-full hover:bg-[#025a99] transform hover:scale-105 hover:shadow-lg transition-all duration-300">
                   Login
                 </button>
               </Link>
@@ -86,7 +70,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100"
+              className="md:hidden p-2 rounded-md text-gray-700 hover:text-[#036BB4] hover:bg-gray-100"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMobileMenuOpen ? (
@@ -100,31 +84,32 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden border-t border-gray-200 overflow-hidden transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-          <div className="px-4 pt-2 pb-4 space-y-2">
-            <Link href="/" className={`block px-3 py-2 rounded-md font-medium transition-all duration-300 transform ${isActive('/') ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 hover:translate-x-1'}`}>
-              Home
-            </Link>
-            <Link href="/shipper" className={`block px-3 py-2 rounded-md font-medium transition-all duration-300 transform ${isActive('/shipper') ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 hover:translate-x-1'}`}>
-              Shipper
-            </Link>
-            <Link href="/transporter" className={`block px-3 py-2 rounded-md font-medium transition-all duration-300 transform ${isActive('/transporter') ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 hover:translate-x-1'}`}>
-              Transporter
-            </Link>
-            <Link href="/faq" className={`block px-3 py-2 rounded-md font-medium transition-all duration-300 transform ${isActive('/faq') ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 hover:translate-x-1'}`}>
-              FAQ
-            </Link>
-            <Link href="/dashboard/Shipper" className={`block px-3 py-2 rounded-md font-medium transition-all duration-300 transform ${isActive('/dashboard') ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 hover:translate-x-1'}`}>
-              Dashboard
-            </Link>
-            <div className="flex gap-3 pt-4 space-y-2">
+        <div className={`md:hidden border-t border-gray-200 overflow-hidden transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="px-4 pt-2 pb-6 space-y-2">
+            {[
+                { name: 'Home', path: '/' },
+                { name: 'Shipper', path: '/shipper' },
+                { name: 'Transporter', path: '/transporter' },
+                { name: 'FAQ', path: '/faq' },
+                { name: 'Dashboard', path: '/dashboard/Shipper' },
+            ].map((link) => (
+                <Link 
+                  key={link.path}
+                  href={link.path} 
+                  className={`block px-3 py-2 rounded-md font-medium transition-all duration-300 transform ${isActive(link.path) ? 'text-[#036BB4] bg-blue-50 border-l-4 border-[#036BB4]' : 'text-gray-700 hover:text-[#036BB4] hover:bg-gray-50 hover:translate-x-1'}`}
+                >
+                  {link.name}
+                </Link>
+            ))}
+            
+            <div className="grid grid-cols-2 gap-3 pt-4">
               <Link href="/signup">
-                <button className="w-full px-6 py-2 text-blue-600 font-medium border border-blue-600 rounded-full hover:bg-blue-50 transform hover:scale-105 transition-all duration-300">
+                <button className="w-full px-4 py-2 text-[#036BB4] font-medium border border-[#036BB4] rounded-full hover:bg-blue-50 transition-all duration-300">
                   Sign Up
                 </button>
               </Link>
               <Link href="/login">
-                <button className="w-full px-6 py-2 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-700 transform hover:scale-105 hover:shadow-lg transition-all duration-300">
+                <button className="w-full px-4 py-2 bg-[#036BB4] text-white font-medium rounded-full hover:bg-[#025a99] transition-all duration-300">
                   Login
                 </button>
               </Link>

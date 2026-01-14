@@ -29,13 +29,16 @@ const Header = () => {
                 href={item.href}
                 className={`py-4 transition-colors relative ${
                   isActive
-                    ? 'text-[#0066cc] font-medium'
-                    : 'text-gray-900 hover:text-[#0066cc]'
+                    ? 'font-medium'
+                    : 'text-gray-900'
                 }`}
+                style={{color: isActive ? '#036BB4' : 'inherit'}}
+                onMouseEnter={(e) => !isActive && (e.currentTarget.style.color = '#036BB4')}
+                onMouseLeave={(e) => !isActive && (e.currentTarget.style.color = 'inherit')}
               >
                 {item.label}
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0066cc]"></span>
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5" style={{backgroundColor: '#036BB4'}}></span>
                 )}
               </Link>
             );

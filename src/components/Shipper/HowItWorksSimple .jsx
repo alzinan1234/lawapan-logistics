@@ -17,17 +17,17 @@ const HowItWorksSimple = () => {
 
   const steps = [
     {
-      icon: <Edit3 className="w-8 h-8 text-blue-500" />,
+      icon: <Edit3 className="w-8 h-8" style={{color: '#036BB4'}} />,
       title: "Enter My Shipment",
       description: "Provide details about your cargo, pickup location, and destination."
     },
     {
-      icon: <Truck className="w-8 h-8 text-blue-500" />,
+      icon: <Truck className="w-8 h-8" style={{color: '#036BB4'}} />,
       title: "2. Choose a Provider",
       description: "Compare offers from verified transporters and select the best one."
     },
     {
-      icon: <Package className="w-8 h-8 text-blue-500" />,
+      icon: <Package className="w-8 h-8" style={{color: '#036BB4'}} />,
       title: "3. Ship",
       description: "Track your shipment in real-time until safe delivery"
     }
@@ -55,13 +55,17 @@ const HowItWorksSimple = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl border-2 border-gray-200 p-8 text-center hover:shadow-lg hover:border-blue-300 transition-all duration-500 transform hover:-translate-y-1"
+              className="bg-white rounded-2xl border-2 border-gray-200 p-8 text-center hover:shadow-lg transition-all duration-500 transform hover:-translate-y-1"
+              style={{}}
+              onMouseEnter={(e) => e.currentTarget.style.borderColor = '#036BB4'}
+              onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgb(229, 231, 235)'}
               data-aos="fade-up"
               data-aos-delay={200 + (index * 100)}
             >
               {/* Icon Container */}
               <div 
-                className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6"
+                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+                style={{backgroundColor: 'rgba(3, 107, 180, 0.05)'}}
                 data-aos="zoom-in"
                 data-aos-delay={300 + (index * 100)}
               >

@@ -60,7 +60,10 @@ const HowItWorksTransporter = () => {
             return (
               <div
                 key={step.id}
-                className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-blue-300 transition-colors duration-300 hover:shadow-lg"
+                className="bg-white border-2 border-gray-200 rounded-2xl p-8 transition-colors duration-300 hover:shadow-lg"
+                style={{}}
+                onMouseEnter={(e) => e.currentTarget.style.borderColor = '#036BB4'}
+                onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgb(229, 231, 235)'}
                 data-aos="fade-up"
                 data-aos-delay={200 + (index * 100)}
               >
@@ -70,8 +73,8 @@ const HowItWorksTransporter = () => {
                   data-aos="zoom-in"
                   data-aos-delay={300 + (index * 100)}
                 >
-                  <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center">
-                    <IconComponent className="w-8 h-8 text-[#0066cc]" />
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{backgroundColor: 'rgba(3, 107, 180, 0.05)'}}>
+                    <IconComponent className="w-8 h-8" style={{color: '#036BB4'}} />
                   </div>
                 </div>
 
@@ -103,7 +106,7 @@ const HowItWorksTransporter = () => {
           data-aos="fade-up"
           data-aos-delay="500"
         >
-          <button className="px-8 py-3 bg-white text-[#0066cc] font-semibold rounded-full border-2 border-[#0066cc] hover:bg-blue-50 transition-colors duration-300 shadow-sm">
+          <button className="px-8 py-3 font-semibold rounded-full border-2 transition-colors duration-300 shadow-sm text-white" style={{backgroundColor: '#036BB4', borderColor: '#036BB4'}} onMouseEnter={(e) => {e.currentTarget.style.backgroundColor = 'rgba(3, 107, 180, 0.05)'; e.currentTarget.style.color = '#036BB4';}} onMouseLeave={(e) => {e.currentTarget.style.backgroundColor = '#036BB4'; e.currentTarget.style.color = 'white';}}>
             Register my truck now
           </button>
         </div>

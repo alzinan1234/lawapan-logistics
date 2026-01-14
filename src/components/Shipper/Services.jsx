@@ -17,22 +17,22 @@ const Services = () => {
 
   const services = [
     {
-      icon: <Truck className="w-8 h-8 text-blue-500" />,
+      icon: <Truck className="w-8 h-8" style={{color: '#036BB4'}} />,
       title: "Full Transport Service",
       description: "Door-to-door transport from origin warehouse to final destination with professional handling"
     },
     {
-      icon: <Shield className="w-8 h-8 text-blue-500" />,
+      icon: <Shield className="w-8 h-8" style={{color: '#036BB4'}} />,
       title: "Cargo Insurance",
       description: "Comprehensive insurance coverage up to 10,000,000 FCFA per trip in partnership with Colis Assurances"
     },
     {
-      icon: <MapPin className="w-8 h-8 text-blue-500" />,
+      icon: <MapPin className="w-8 h-8" style={{color: '#036BB4'}} />,
       title: "GPS Truck Tracking",
       description: "Real-time location tracking of your shipment from pickup to delivery"
     },
     {
-      icon: <Zap className="w-8 h-8 text-blue-500" />,
+      icon: <Zap className="w-8 h-8" style={{color: '#036BB4'}} />,
       title: "Fast & Reliable",
       description: "Quick response times and reliable service to keep your business running smoothly"
     }
@@ -61,7 +61,17 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-blue-50 to-white rounded-3xl border-2 border-blue-200 p-8 hover:shadow-xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1"
+              className="rounded-3xl p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              style={{
+                background: `linear-gradient(to bottom right, rgba(3, 107, 180, 0.05), white)`,
+                border: `2px solid rgba(3, 107, 180, 0.2)`
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#036BB4';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(3, 107, 180, 0.2)';
+              }}
               data-aos="fade-up"
               data-aos-delay={200 + (index * 100)}
             >

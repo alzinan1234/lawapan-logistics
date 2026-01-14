@@ -45,7 +45,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         {/* Header Section */}
         <div className={`flex items-center h-16 border-b border-[#D6D6D6] flex-shrink-0 transition-all duration-300 ${isOpen ? "px-6 justify-between" : "justify-center"}`}>
           {isOpen && (
-            <span className="font-bold text-blue-600 text-lg whitespace-nowrap overflow-hidden">
+            <span className="font-bold text-lg whitespace-nowrap overflow-hidden" style={{color: '#036BB4'}}>
               LAWAPAN
             </span>
           )}
@@ -67,9 +67,12 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                 href={href}
                 className={`flex items-center h-12 rounded-lg transition-all relative group ${
                   isActive
-                    ? "bg-blue-600 text-white shadow-md shadow-blue-200"
-                    : "text-gray-600 hover:bg-gray-50 hover:text-blue-600"
+                    ? "shadow-md"
+                    : "text-gray-600 hover:bg-gray-50"
                 } ${!isOpen ? "justify-center" : "px-3"}`}
+                style={isActive ? {backgroundColor: '#036BB4', color: '#ffffff'} : {}}
+                onMouseEnter={(e) => !isActive && (e.currentTarget.style.color = '#036BB4')}
+                onMouseLeave={(e) => !isActive && (e.currentTarget.style.color = '#4b5563')}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />
                 
@@ -94,9 +97,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           <div className="pt-2">
             <button
               onClick={() => isOpen && setSettingsOpen(!settingsOpen)}
-              className={`w-full flex items-center h-12 rounded-lg transition-all relative group ${
-                settingsOpen && isOpen ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:bg-gray-50"
-              } ${!isOpen ? "justify-center" : "px-3"}`}
+              className={`w-full flex items-center h-12 rounded-lg transition-all relative group text-gray-600 hover:bg-gray-50 ${!isOpen ? "justify-center" : "px-3"}`}
+              style={settingsOpen && isOpen ? {backgroundColor: '#f0f7ff', color: '#036BB4'} : {}}
             >
               <Settings className="w-5 h-5 flex-shrink-0" />
               
@@ -127,11 +129,14 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                     <Link
                       key={name}
                       href={href}
-                      className={`flex items-center px-3 py-2 rounded-md text-xs font-medium transition-all ${
+                      className={`flex items-center px-3 py-2 rounded-md text-xs font-medium transition-all hover:bg-white ${
                         isActive
-                          ? "bg-blue-600 text-white shadow-md"
-                          : "text-gray-500 hover:text-blue-600 hover:bg-white"
+                          ? "shadow-md"
+                          : "text-gray-500"
                       }`}
+                      style={isActive ? {backgroundColor: '#036BB4', color: '#ffffff'} : {}}
+                      onMouseEnter={(e) => !isActive && (e.currentTarget.style.color = '#036BB4')}
+                      onMouseLeave={(e) => !isActive && (e.currentTarget.style.color = '#9ca3af')}
                     >
                       <Icon className="w-4 h-4 mr-3 flex-shrink-0" />
                       <span className="whitespace-nowrap">{name}</span>

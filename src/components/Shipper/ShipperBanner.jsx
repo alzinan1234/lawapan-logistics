@@ -87,7 +87,7 @@ const ShipperBanner = () => {
                   Pickup (postal code or city)
                 </label>
                 <div className="relative group">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-600">
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2" style={{color: '#036BB4'}}>
                     <MapPin size={20} />
                   </div>
                   <input
@@ -110,7 +110,7 @@ const ShipperBanner = () => {
                   Delivery (postal code or city)
                 </label>
                 <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-600">
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2" style={{color: '#036BB4'}}>
                     <MapPin size={20} />
                   </div>
                   <input
@@ -133,7 +133,7 @@ const ShipperBanner = () => {
                   Email address
                 </label>
                 <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-600">
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2" style={{color: '#036BB4'}}>
                     <Mail size={20} />
                   </div>
                   <input
@@ -156,7 +156,7 @@ const ShipperBanner = () => {
                   Phone number
                 </label>
                 <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-600">
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2" style={{color: '#036BB4'}}>
                     <Phone size={20} />
                   </div>
                   <input
@@ -177,7 +177,7 @@ const ShipperBanner = () => {
                 <button
                   onClick={handleSearch}
                   disabled={isLoading}
-                  className="w-full bg-[#0066cc] text-white py-4 px-8 rounded-full font-bold text-sm hover:bg-[#0052a3] transition-all active:scale-95 shadow-lg shadow-blue-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#036BB4] text-white py-4 px-8 rounded-full font-bold text-sm hover:bg-[#0052a3] transition-all active:scale-95 shadow-lg shadow-blue-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? '...' : 'Direct Rate'}
                 </button>

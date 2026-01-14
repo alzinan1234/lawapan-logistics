@@ -39,7 +39,7 @@ const IssueReported = () => {
         <div className="overflow-x-auto border border-gray-100 rounded-lg">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-blue-600 text-white">
+              <tr className="bg-[#036BB4] text-white">
                 <th className="py-4 px-4 font-semibold text-sm">Issue ID</th>
                 <th className="py-4 px-4 font-semibold text-sm">Issue Title</th>
                 <th className="py-4 px-4 font-semibold text-sm">Shipment Id</th>
@@ -90,24 +90,24 @@ const IssueReported = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-end gap-2 mt-8">
-          <button className="w-10 h-10 border border-blue-600 rounded-full flex items-center justify-center text-blue-600">
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          {[1, 2, 3, 4, '...', 30].map((page, i) => (
-            <button 
-              key={i}
-              className={`w-10 h-10 rounded text-sm font-medium transition-colors ${
-                page === 1 ? 'bg-blue-600 text-white shadow-md' : 'text-gray-500 hover:bg-gray-100'
-              }`}
-            >
-              {page}
-            </button>
-          ))}
-          <button className="w-10 h-10 border border-blue-600 rounded-full flex items-center justify-center text-blue-600">
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
+           <div className="flex items-center justify-end gap-2 mt-8">
+              <button className="w-10 h-10 border border-[#036BB4] rounded-full flex items-center justify-center text-[#036BB4]">
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              {[1, 2, 3, 4, '...', 30].map((page, i) => (
+                <button 
+                  key={i}
+                  className={`w-10 h-10 rounded text-sm font-medium transition-colors ${
+                    page === 1 ? 'bg-[#036BB4] text-white shadow-md' : 'text-gray-500 hover:bg-gray-100'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+              <button className="w-10 h-10 border border-[#036BB4] rounded-full flex items-center justify-center text-[#036BB4]">
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
       </div>
     </div>
   );

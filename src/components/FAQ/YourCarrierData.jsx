@@ -38,7 +38,7 @@ const YourCarrierData = () => {
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             Your Carrier Data
           </h1>
-          <div className="w-32 h-1 bg-[#0066cc]"></div>
+          <div className="w-32 h-1" style={{backgroundColor: '#036BB4'}}></div>
         </div>
 
         {/* First Section */}
@@ -47,7 +47,7 @@ const YourCarrierData = () => {
           data-aos="fade-right"
           data-aos-delay="150"
         >
-          <h2 className="text-[#0066cc] font-medium text-lg mb-4">
+          <h2 className="font-medium text-lg mb-4" style={{color: '#036BB4'}}>
             The data used helps us to provide better services to you every day
           </h2>
           <ul className="space-y-3">
@@ -70,7 +70,7 @@ const YourCarrierData = () => {
           data-aos="fade-left"
           data-aos-delay="300"
         >
-          <h2 className="text-[#0066cc] font-medium text-lg mb-4">
+          <h2 className="font-medium text-lg mb-4" style={{color: '#036BB4'}}>
             We only use the data which relates to our customers
           </h2>
           <ul className="space-y-3">

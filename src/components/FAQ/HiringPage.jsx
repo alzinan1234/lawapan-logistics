@@ -47,7 +47,7 @@ const HiringPage = () => {
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             Lawapantruck is hiring
           </h1>
-          <div className="w-32 h-1 bg-[#0066cc]"></div>
+          <div className="w-32 h-1" style={{backgroundColor: '#036BB4'}}></div>
         </div>
 
         {/* Subtitle with animation */}
@@ -56,7 +56,7 @@ const HiringPage = () => {
           data-aos="fade-up"
           data-aos-delay="150"
         >
-          <h2 className="text-[#0066cc] font-medium text-lg">
+          <h2 className="font-medium text-lg" style={{color: '#036BB4'}}>
             We are currently looking for :
           </h2>
         </div>
@@ -84,7 +84,7 @@ const HiringPage = () => {
                 data-aos-delay={300 + (index * 100)}
               >
                 {/* Icon */}
-                <div className="w-14 h-14 bg-[#0066cc] rounded-full flex items-center justify-center mb-4">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4" style={{backgroundColor: '#036BB4'}}>
                   <IconComponent className="w-7 h-7 text-white" />
                 </div>
 

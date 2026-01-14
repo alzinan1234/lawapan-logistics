@@ -101,8 +101,10 @@ export default function ChangePasswordForm() {
       <div className="flex items-center justify-center mt-6 md:w-[982px]">
         <button
           type="submit"
-          className="bg-blue-500 text-white hover:bg-opacity-80 text-white font-bold w-full py-3 px-4 rounded-[4px] focus:outline-none focus:shadow-outline"
-        
+          className="text-white font-bold w-full py-3 px-4 rounded-[4px] focus:outline-none focus:shadow-outline transition-colors"
+          style={{backgroundColor: '#036BB4'}}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#025191'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#036BB4'}
         >
           Save Changes
         </button>
