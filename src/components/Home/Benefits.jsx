@@ -76,6 +76,7 @@ const BenefitsSection = () => {
                   <span className="w-1.5 h-1.5 bg-gray-800 rounded-full mt-2 flex-shrink-0"></span>
                   {/* Font size matched to HowItWorks (text-sm) */}
                   <span className="text-gray-700 text-sm leading-relaxed">
+                     
                     {item.text}
                   </span>
                 </li>
