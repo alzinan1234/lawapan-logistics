@@ -84,6 +84,7 @@ const BenefitsSection = () => {
           </div>
 
           {/* For Transporters Card */}
+       
           <div 
             className="group bg-white rounded-[2rem] border border-blue-200 shadow-sm p-8 hover:shadow-2xl transition-all duration-300"
             data-aos="fade-left"
