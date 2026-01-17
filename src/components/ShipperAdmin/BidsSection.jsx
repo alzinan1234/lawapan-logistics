@@ -72,20 +72,20 @@ const BidsSection = () => {
         <div className="border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
           <div className="p-4 bg-gray-50 border-b border-gray-200">
             <h3 className="font-bold text-gray-800 text-lg">Bids</h3>
+            
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left">
               <thead>
                 <tr className="bg-[#036BB4] text-white text-sm">
-
                   <th className="py-3 px-6 font-semibold">Bidders</th>
                   <th className="py-3 px-6 font-semibold">Price</th>
-                  
+
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {bids.map((bid, idx) => (
-                  <tr key={idx} className="hover:bg-gray-50 transition-colors">
+                  <tr key={idx} className="hover:bg-gray-50 transition-colors">              
                     <td className="py-3 px-6">
                       <div className="flex items-center gap-3">
                         <div className="w-6 h-6 rounded-full flex items-center justify-center overflow-hidden border border-gray-100" style={{backgroundColor: '#f0f7ff'}}>
