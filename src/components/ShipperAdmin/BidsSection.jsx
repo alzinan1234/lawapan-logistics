@@ -33,6 +33,7 @@ const BidsSection = () => {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold text-gray-800">Live Bids & Assigned transporter</h2>
         <div className="flex gap-2">
+          
           <button className="p-1 rounded-full border transition-colors" style={{borderColor: '#036BB4', color: '#036BB4'}} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f0f7ff'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
             <ChevronLeft size={20} />
           </button>
