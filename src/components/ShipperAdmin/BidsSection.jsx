@@ -77,8 +77,10 @@ const BidsSection = () => {
             <table className="w-full text-left">
               <thead>
                 <tr className="bg-[#036BB4] text-white text-sm">
+
                   <th className="py-3 px-6 font-semibold">Bidders</th>
                   <th className="py-3 px-6 font-semibold">Price</th>
+                  
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
