@@ -42,7 +42,6 @@ const BidsSection = () => {
           </button>
         </div>
       </div>
-
       {/* 2. Horizontal Shipment Cards Slider */}
       <div className="flex gap-4 mb-8 overflow-x-auto pb-4 no-scrollbar">
         {shipments.map((ship, idx) => (

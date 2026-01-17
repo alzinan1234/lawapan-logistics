@@ -152,6 +152,7 @@ const SafelyShipInsurance = () => {
                   className="border-b border-gray-200"
                   data-aos="fade-up"
                   data-aos-delay={300 + (index * 50)}
+                 
                 >
                   <button
                     onClick={() => toggleQuestion(item.id)}
