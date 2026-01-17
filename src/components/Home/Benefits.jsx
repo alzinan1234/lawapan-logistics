@@ -21,10 +21,12 @@ const BenefitsSection = () => {
   ];
 
   const transporterBenefits = [
+
     { text: <><strong>Free Geolocation–</strong> Geolocate your drivers for free</> },
     { text: <><strong>Free Freight Offers–</strong> Receive offers around you at no cost</> },
     { text: <><strong>Quick Payment–</strong> Get paid quickly after delivery</> },
     { text: <><strong>More Opportunities–</strong> Maximize your fleet's productivity</> }
+    
   ];
 
   return (

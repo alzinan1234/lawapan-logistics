@@ -46,7 +46,7 @@ const ContactUs = () => {
     {
       id: 2,
       icon: Mail,
-      title: '@gmail.com',
+      title: 'alzinan314@gmail.com',
       description: ''
     },
     {
@@ -55,7 +55,7 @@ const ContactUs = () => {
       title: '0179711139',
       description: ''
     }
-  ];
+  ]; 
 
   return (
     <div className="w-full bg-white py-12 px-4">
@@ -164,7 +164,6 @@ const ContactUs = () => {
               />
             </div>
           </div>
-
           {/* Row 3: Message with animation */}
           <div 
             className="relative mb-6"
@@ -184,7 +183,6 @@ const ContactUs = () => {
               onBlur={(e) => e.target.style.borderBottomColor = 'rgb(229, 231, 235)'}
             ></textarea>
           </div>
-
           {/* Submit Button with animation */}
           <div
             data-aos="zoom-in"
@@ -201,7 +199,6 @@ const ContactUs = () => {
             </button>
           </div>
         </div>
-
         {/* Contact Information Cards with staggered animations */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {contactInfo.map((contact, index) => {
@@ -217,12 +214,10 @@ const ContactUs = () => {
                 <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4" style={{backgroundColor: '#036BB4'}}>
                   <IconComponent className="w-7 h-7 text-white" />
                 </div>
-
                 {/* Title */}
                 <h3 className="text-gray-900 font-semibold text-base mb-1">
                   {contact.title}
                 </h3>
-
                 {/* Description */}
                 {contact.description && (
                   <p className="text-gray-600 text-sm">
