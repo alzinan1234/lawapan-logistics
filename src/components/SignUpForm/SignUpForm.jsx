@@ -1,6 +1,6 @@
 // components/SignUpForm.js
 "use client";
-import { User, Truck } from 'lucide-react';
+import { User, Truck, Wrench, Package, Shield } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -23,15 +23,12 @@ export default function SignUpForm() {
   const [showTruckOptions, setShowTruckOptions] = useState(false);
 
   const truckTypeOptions = [
-
-     
-    { id: 'tractorhead', label: 'Tractorhead (566)', value: 'tractorhead', count: 566 },
-    { id: 'truck', label: 'Truck (690)', value: 'truck', count: 690 },
-    { id: 'light-commercial', label: 'Light commercial vehicle (970)', value: 'light-commercial', count: 970 },
-    { id: 'construction', label: 'Construction equipment (371)', value: 'construction', count: 371 },
-    { id: 'semi-trailer', label: 'Semi-trailer (285)', value: 'semi-trailer', count: 285 },
-    { id: 'trailer', label: 'Trailer (43)', value: 'trailer', count: 43 },
-
+    { id: 'tractorhead', label: 'Tractorhead (566)', value: 'tractorhead', count: 566, icon: Truck },
+    { id: 'truck', label: 'Truck (690)', value: 'truck', count: 690, icon: Truck },
+    { id: 'light-commercial', label: 'Light commercial vehicle (970)', value: 'light-commercial', count: 970, icon: Package },
+    { id: 'construction', label: 'Construction equipment (371)', value: 'construction', count: 371, icon: Wrench },
+    { id: 'semi-trailer', label: 'Semi-trailer (285)', value: 'semi-trailer', count: 285, icon: Shield },
+    { id: 'trailer', label: 'Trailer (43)', value: 'trailer', count: 43, icon: Package },
   ];
 
   const countries = ['Benin', 'Nigeria', 'Ghana', 'Togo', 'Ivory Coast'];
@@ -185,25 +182,16 @@ export default function SignUpForm() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
-      {/* Header */}
-      {/* <div className="w-full max-w-md text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h1>
-        <p className="text-gray-600">Join thousands of businesses and transporters</p>
-      </div> */}
-
       {/* Main Form Container */}
       <div className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6">
           <div className="">
-        {/* Placeholder for the logo image. Replace './login-logo (2).png' with the actual path. 
-            I've added a width/max-width to resemble the size in the image. */}
         <img 
           src="/login-logo (2).png" 
           alt="LAWANPAN TRUCK Logo" 
           className="max-w-xs w-28 md:w-36 lg:w-40 mx-auto" 
         />
-        {/*  - Not triggered as the user provides the logo */}
       </div>
-            <div className="w-full max-w-md text-center mb-8  mx-auto">
+            <div className="w-full max-w-md text-center mb-8 mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h1>
         <p className="text-gray-600">Join thousands of businesses and transporters</p>
       </div>
@@ -275,7 +263,7 @@ export default function SignUpForm() {
               name="companyName"
               value={formData.companyName}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
               placeholder="Enter company name"
             />
             {errors.companyName && (
@@ -293,14 +281,14 @@ export default function SignUpForm() {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
               placeholder="Your email address"
             />
             {errors.email && (
               <p className="mt-1 text-sm text-red-600">{errors.email}</p>
             )}
           </div>
-            {/* */}
+
           {/* Phone Number */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -311,7 +299,7 @@ export default function SignUpForm() {
               name="phone"
               value={formData.phone}
               onChange={handlePhoneChange}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
               placeholder="+226 XX XX XX XX"
               maxLength="16"
             />
@@ -330,7 +318,7 @@ export default function SignUpForm() {
                 name="country"
                 value={formData.country}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white text-black"
               >
                 {countries.map(country => (
                   <option key={country} value={country}>{country}</option>
@@ -358,7 +346,7 @@ export default function SignUpForm() {
                   name="numberOfTrucks"
                   value={formData.numberOfTrucks}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   placeholder="Enter your total truck number"
                   min="0"
                 />
@@ -376,14 +364,17 @@ export default function SignUpForm() {
                   <button
                     type="button"
                     onClick={() => setShowTruckOptions(!showTruckOptions)}
-                    className={`w-full px-4 py-3 rounded-lg border ${errors.truckTypes ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-left flex justify-between items-center ${formData.truckTypes.length > 0 ? 'text-gray-900' : 'text-gray-500'}`}
+                    className={`w-full px-4 py-3 rounded-lg border ${errors.truckTypes ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-left flex justify-between items-center text-black ${formData.truckTypes.length > 0 ? 'text-black' : 'text-gray-500'}`}
                   >
-                    <span>
-                      {formData.truckTypes.length > 0 
-                        ? `${formData.truckTypes.length} type(s) selected`
-                        : 'Select truck type'
-                      }
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <Truck className="w-5 h-5" />
+                      <span>
+                        {formData.truckTypes.length > 0 
+                          ? `${formData.truckTypes.length} type(s) selected`
+                          : 'Select truck type'
+                        }
+                      </span>
+                    </div>
                     <svg className={`w-5 h-5 text-gray-400 transition-transform ${showTruckOptions ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
@@ -391,21 +382,27 @@ export default function SignUpForm() {
                   
                   {showTruckOptions && (
                     <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto">
-                      {truckTypeOptions.map(option => (
-                        <button
-                          key={option.id}
-                          type="button"
-                          onClick={() => handleTruckTypeToggle(option.value)}
-                          className={`w-full px-4 py-3 text-left hover:bg-gray-50 flex justify-between items-center ${formData.truckTypes.includes(option.value) ? 'bg-blue-50 text-blue-700' : ''}`}
-                        >
-                          <span>{option.label}</span>
-                          {formData.truckTypes.includes(option.value) && (
-                            <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          )}
-                        </button>
-                      ))}
+                      {truckTypeOptions.map(option => {
+                        const IconComponent = option.icon;
+                        return (
+                          <button
+                            key={option.id}
+                            type="button"
+                            onClick={() => handleTruckTypeToggle(option.value)}
+                            className={`w-full px-4 py-3 text-left hover:bg-gray-50 flex justify-between items-center text-black ${formData.truckTypes.includes(option.value) ? 'bg-blue-50 text-blue-700' : ''}`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <IconComponent className="w-5 h-5 text-gray-600" />
+                              <span>{option.label}</span>
+                            </div>
+                            {formData.truckTypes.includes(option.value) && (
+                              <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                              </svg>
+                            )}
+                          </button>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
@@ -418,13 +415,15 @@ export default function SignUpForm() {
                   <div className="mt-2 flex flex-wrap gap-2">
                     {formData.truckTypes.map(type => {
                       const option = truckTypeOptions.find(opt => opt.value === type);
+                      const IconComponent = option.icon;
                       return (
-                        <span key={type} className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800">
+                        <span key={type} className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800">
+                          <IconComponent className="w-4 h-4" />
                           {option.label.split(' (')[0]}
                           <button
                             type="button"
                             onClick={() => handleTruckTypeToggle(type)}
-                            className="ml-2 text-blue-600 hover:text-blue-800"
+                            className="ml-1 text-blue-600 hover:text-blue-800"
                           >
                             ×
                           </button>
@@ -473,7 +472,7 @@ export default function SignUpForm() {
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
               placeholder="Minimum 6 characters"
             />
             {errors.password && (
@@ -490,7 +489,7 @@ export default function SignUpForm() {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
               placeholder="Re-enter your password"
             />
             {errors.confirmPassword && (

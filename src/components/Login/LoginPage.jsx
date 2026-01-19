@@ -110,7 +110,7 @@ export default function LoginPage() {
               // Removed onKeyPress from input, as it's better handled on the form/button submit/click
               className={`w-full px-4 py-3 border ${
                 errors.email ? 'border-red-500' : 'border-gray-300'
-              } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition`}
+              } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition text-black`}
               placeholder=""
             />
             {errors.email && (
@@ -133,7 +133,7 @@ export default function LoginPage() {
                 onKeyPress={handleKeyPress} // Retained Enter key submit functionality
                 className={`w-full px-4 py-3 border ${
                   errors.password ? 'border-red-500' : 'border-gray-300'
-                } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition pr-12`}
+                } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition pr-12 text-black`}
                 placeholder=""
               />
               <button
