@@ -83,7 +83,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                 >
                   {name}
                 </span>
-
                 {!isOpen && (
                   <div className="absolute left-16 bg-gray-900 text-white text-xs rounded py-1.5 px-3 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 whitespace-nowrap shadow-xl">
                     {name}

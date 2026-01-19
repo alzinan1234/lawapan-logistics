@@ -61,7 +61,7 @@ const AboutUs = () => {
             Our Purpose:
           </h3>
           <p className="text-gray-600 text-sm leading-relaxed">
-            Our mission is to simplify the travel experience by providing a platform where quality, convenience, and affordability meet. We're committed to offering a wide range of hotel options, ensuring every traveler finds their ideal stay, no matter their budget or destination.
+            Our mission is to simplify the travel experience by providing a platform where quality, convenience, and affordability meet. We are committed to offering a wide range of hotel options, ensuring every traveler finds their ideal stay, no matter their budget or destination.
           </p>
         </div>
 
