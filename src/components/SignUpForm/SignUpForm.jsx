@@ -204,15 +204,17 @@ export default function SignUpForm() {
       onClick={() => handleRoleChange('shipper')}
       className={`flex-1 p-6 rounded-xl border-2 text-center transition-all duration-200 ${
         role === 'shipper' 
-        ? 'border-blue-500 bg-blue-50/50 ring-1 ring-blue-500' 
+        ? 'bg-gray-50 ring-1'
         : 'border-gray-100 bg-gray-50 text-gray-700 hover:border-gray-200'
       }`}
+      style={role === 'shipper' ? { borderColor: '#036BB4', ringColor: '#036BB4' } : {}}
     >
       <div className="flex flex-col items-center gap-3">
         <div className={`w-12 h-12 rounded-full flex items-center justify-center border ${
-          role === 'shipper' ? 'bg-white border-blue-200 shadow-sm' : 'bg-white border-gray-200'
-        }`}>
-          <User className={`w-6 h-6 ${role === 'shipper' ? 'text-blue-600' : 'text-gray-400'}`} />
+          role === 'shipper' ? 'bg-white shadow-sm' : 'bg-white border-gray-200'
+        }`}
+        style={role === 'shipper' ? { borderColor: '#036BB4' } : {}}>
+          <User className={`w-6 h-6 ${role === 'shipper' ? '' : 'text-gray-400'}`} style={role === 'shipper' ? { color: '#036BB4' } : {}} />
         </div>
         <div>
           <div className={`font-bold text-lg ${role === 'shipper' ? 'text-gray-900' : 'text-gray-600'}`}>{`I'm a shipper`}</div>
@@ -227,15 +229,17 @@ export default function SignUpForm() {
       onClick={() => handleRoleChange('transporter')}
       className={`flex-1 p-6 rounded-xl border-2 text-center transition-all duration-200 ${
         role === 'transporter' 
-        ? 'border-blue-500 bg-blue-50/50 ring-1 ring-blue-500' 
+        ? 'bg-gray-50 ring-1'
         : 'border-gray-100 bg-gray-50 text-gray-700 hover:border-gray-200'
       }`}
+      style={role === 'transporter' ? { borderColor: '#036BB4', ringColor: '#036BB4' } : {}}
     >
       <div className="flex flex-col items-center gap-3">
         <div className={`w-12 h-12 rounded-full flex items-center justify-center border ${
-          role === 'transporter' ? 'bg-white border-blue-200 shadow-sm' : 'bg-white border-gray-200'
-        }`}>
-          <Truck className={`w-6 h-6 ${role === 'transporter' ? 'text-blue-600' : 'text-gray-400'}`} />
+          role === 'transporter' ? 'bg-white shadow-sm' : 'bg-white border-gray-200'
+        }`}
+        style={role === 'transporter' ? { borderColor: '#036BB4' } : {}}>
+          <Truck className={`w-6 h-6 ${role === 'transporter' ? '' : 'text-gray-400'}`} style={role === 'transporter' ? { color: '#036BB4' } : {}} />
         </div>
         <div>
           <div className={`font-bold text-lg ${role === 'transporter' ? 'text-gray-900' : 'text-gray-600'}`}>{`I'm a Transporter`}</div>
@@ -248,7 +252,7 @@ export default function SignUpForm() {
   <div className="h-px bg-gray-100 mt-6"></div>
 </div>
         {/* Form Title */}
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">
+        <h2 className="text-xl font-semibold text-black mb-6">
           {role === 'transporter' ? 'Company Details' : 'Basic information'}
         </h2>
 
@@ -263,7 +267,10 @@ export default function SignUpForm() {
               name="companyName"
               value={formData.companyName}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-transparent text-black"
+              style={{boxShadow: 'none'}}
+              onFocus={(e) => e.target.style.boxShadow = '0 0 0 2px #036BB4'}
+              onBlur={(e) => e.target.style.boxShadow = 'none'}
               placeholder="Enter company name"
             />
             {errors.companyName && (
@@ -281,7 +288,10 @@ export default function SignUpForm() {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-transparent text-black"
+              style={{boxShadow: 'none'}}
+              onFocus={(e) => e.target.style.boxShadow = '0 0 0 2px #036BB4'}
+              onBlur={(e) => e.target.style.boxShadow = 'none'}
               placeholder="Your email address"
             />
             {errors.email && (
@@ -299,7 +309,10 @@ export default function SignUpForm() {
               name="phone"
               value={formData.phone}
               onChange={handlePhoneChange}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-transparent text-black"
+              style={{boxShadow: 'none'}}
+              onFocus={(e) => e.target.style.boxShadow = '0 0 0 2px #036BB4'}
+              onBlur={(e) => e.target.style.boxShadow = 'none'}
               placeholder="+226 XX XX XX XX"
               maxLength="16"
             />
@@ -318,7 +331,10 @@ export default function SignUpForm() {
                 name="country"
                 value={formData.country}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white text-black"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-transparent appearance-none bg-white text-black"
+                style={{boxShadow: 'none'}}
+                onFocus={(e) => e.target.style.boxShadow = '0 0 0 2px #036BB4'}
+                onBlur={(e) => e.target.style.boxShadow = 'none'}
               >
                 {countries.map(country => (
                   <option key={country} value={country}>{country}</option>
@@ -346,7 +362,10 @@ export default function SignUpForm() {
                   name="numberOfTrucks"
                   value={formData.numberOfTrucks}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-transparent text-black"
+                  style={{boxShadow: 'none'}}
+                  onFocus={(e) => e.target.style.boxShadow = '0 0 0 2px #036BB4'}
+                  onBlur={(e) => e.target.style.boxShadow = 'none'}
                   placeholder="Enter your total truck number"
                   min="0"
                 />
@@ -364,7 +383,10 @@ export default function SignUpForm() {
                   <button
                     type="button"
                     onClick={() => setShowTruckOptions(!showTruckOptions)}
-                    className={`w-full px-4 py-3 rounded-lg border ${errors.truckTypes ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-left flex justify-between items-center text-black ${formData.truckTypes.length > 0 ? 'text-black' : 'text-gray-500'}`}
+                    className={`w-full px-4 py-3 rounded-lg border ${errors.truckTypes ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:border-transparent text-left flex justify-between items-center text-black ${formData.truckTypes.length > 0 ? 'text-black' : 'text-gray-500'}`}
+                    style={formData.truckTypes.length > 0 ? { borderColor: '#036BB4' } : {}}
+                    onFocus={(e) => !errors.truckTypes && (e.currentTarget.style.boxShadow = '0 0 0 2px #036BB4')}
+                    onBlur={(e) => e.currentTarget.style.boxShadow = 'none'}
                   >
                     <div className="flex items-center gap-2">
                       <Truck className="w-5 h-5" />
@@ -389,14 +411,15 @@ export default function SignUpForm() {
                             key={option.id}
                             type="button"
                             onClick={() => handleTruckTypeToggle(option.value)}
-                            className={`w-full px-4 py-3 text-left hover:bg-gray-50 flex justify-between items-center text-black ${formData.truckTypes.includes(option.value) ? 'bg-blue-50 text-blue-700' : ''}`}
+                            className={`w-full px-4 py-3 text-left hover:bg-gray-50 flex justify-between items-center text-black ${formData.truckTypes.includes(option.value) ? '' : ''}`}
+                            style={formData.truckTypes.includes(option.value) ? { backgroundColor: '#f0f7ff' } : {}}
                           >
                             <div className="flex items-center gap-3">
                               <IconComponent className="w-5 h-5 text-gray-600" />
                               <span>{option.label}</span>
                             </div>
                             {formData.truckTypes.includes(option.value) && (
-                              <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" style={{color: '#036BB4'}}>
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                               </svg>
                             )}
@@ -417,7 +440,7 @@ export default function SignUpForm() {
                       const option = truckTypeOptions.find(opt => opt.value === type);
                       const IconComponent = option.icon;
                       return (
-                        <span key={type} className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800">
+                        <span key={type} className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm text-black" style={{backgroundColor: '#f0f7ff', color: '#036BB4'}}>
                           <IconComponent className="w-4 h-4" />
                           {option.label.split(' (')[0]}
                           <button
@@ -472,7 +495,10 @@ export default function SignUpForm() {
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-transparent text-black"
+              style={{boxShadow: 'none'}}
+              onFocus={(e) => e.target.style.boxShadow = '0 0 0 2px #036BB4'}
+              onBlur={(e) => e.target.style.boxShadow = 'none'}
               placeholder="Minimum 6 characters"
             />
             {errors.password && (
@@ -489,7 +515,10 @@ export default function SignUpForm() {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-transparent text-black"
+              style={{boxShadow: 'none'}}
+              onFocus={(e) => e.target.style.boxShadow = '0 0 0 2px #036BB4'}
+              onBlur={(e) => e.target.style.boxShadow = 'none'}
               placeholder="Re-enter your password"
             />
             {errors.confirmPassword && (
@@ -505,11 +534,12 @@ export default function SignUpForm() {
                 id="terms"
                 checked={agreeToTerms}
                 onChange={(e) => setAgreeToTerms(e.target.checked)}
-                className="mt-1 w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                className="mt-1 w-4 h-4 rounded border-gray-300 focus:ring-0"
+                style={{accentColor: '#036BB4'}}
               />
               <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
                 I have read and I accept the{' '}
-                <a href="#" className="text-blue-600 hover:underline font-medium">
+                <a href="#" className="font-medium" style={{color: '#036BB4'}}>
                   general terms and conditions
                 </a>.
               </label>
@@ -520,7 +550,8 @@ export default function SignUpForm() {
                 id="professional"
                 checked={agreeToTerms}
                 readOnly
-                className="mt-1 w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                className="mt-1 w-4 h-4 rounded border-gray-300 focus:ring-0"
+                style={{accentColor: '#036BB4'}}
               />
               <label htmlFor="professional" className="ml-2 text-sm text-gray-700">
                 I understood the <span className="font-medium">Lawapan Truck</span> was a service dedicated to professionals.
@@ -536,7 +567,10 @@ export default function SignUpForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full py-3 px-4 rounded-lg font-medium text-white transition-colors ${isSubmitting ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+            className={`w-full py-3 px-4 rounded-lg font-medium text-white transition-colors`}
+            style={isSubmitting ? {backgroundColor: '#AAD4E8', cursor: 'not-allowed'} : {backgroundColor: '#036BB4'}}
+            onMouseEnter={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#025191')}
+            onMouseLeave={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = '#036BB4')}
           >
             {isSubmitting ? 'Creating...' : 'Create'}
           </button>
@@ -545,7 +579,7 @@ export default function SignUpForm() {
           <div className="text-center pt-4">
             <p className="text-gray-600">
               Already have an account?{' '}
-              <Link href="/login" className="text-blue-600 hover:underline font-medium">
+              <Link href="/login" className="text-[#036BB4] hover:underline font-medium">
                 Log in
               </Link>
             </p>
