@@ -91,7 +91,7 @@ export default function App() {
               className="max-w-xs w-28 md:w-36 lg:w-40 mx-auto" 
             />
           </div>
-          <h2 className="text-2xl font-semibold text-center text-gray-800 mb-3">
+          <h2 className="text-2xl font-semibold text-center text-gray-800 mb-2">
             Login to Account
           </h2>
           <p className="text-center text-gray-500 text-sm mb-8"> 
