@@ -5,7 +5,7 @@ export const drivers = Array.from({ length: 30 }).map((_, i) => ({
   id: (i + 1).toString(),
   name: "John Keita",
   number: "+223 78 22 14 99",
-  licenseFront: "/license-front.png", 
+  licenseFront: "/license-front.png",  
   licenseBack: "/license-back.png",
 }));
 
