@@ -23,6 +23,8 @@ export default function SignUpForm() {
   const [showTruckOptions, setShowTruckOptions] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState('');
 
   const truckTypeOptions = [
     { id: 'tractorhead',        label: 'Tractorhead (566)',               value: 'TRACTORHEAD',               count: 566,  icon: Truck },
@@ -139,10 +141,17 @@ export default function SignUpForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
+    
     setIsSubmitting(true);
+    setLoading(true);
+    setLoadingMessage('Creating your account...');
     setErrorMessage('');
     setSuccessMessage('');
+    
     try {
+      console.log('🚀 Starting signup for role:', role);
+      setLoadingMessage('Validating information...');
+      
       const submitData = {
         companyName: formData.companyName,
         email: formData.email,
@@ -154,10 +163,20 @@ export default function SignUpForm() {
         truckTypes: role === 'transporter' ? formData.truckTypes : [],
         companyLogo: role === 'transporter' ? formData.companyLogo : null,
       };
+      
+      setLoadingMessage('Submitting registration...');
       const response = await signUpUser(submitData);
+      console.log('📦 Signup response:', response);
+      
       if (response.success) {
-        const userRole = response.data?.role || role.toUpperCase();
+        // Get role from response or use the selected role
+        const userRole = (response.data?.role || role).toUpperCase();
+        console.log('✅ Registration successful for role:', userRole);
+        
+        setLoadingMessage('Account created! Redirecting...');
         setSuccessMessage(`Account created successfully! Welcome ${formData.companyName}`);
+        
+        // Clear form
         setFormData({
           companyName: '', email: '', phone: '', country: 'Benin',
           password: '', confirmPassword: '', numberOfTrucks: '',
@@ -165,25 +184,47 @@ export default function SignUpForm() {
         });
         setAgreeToTerms(false);
         setErrors({});
+        
+        // Redirect based on role after short delay
         setTimeout(() => {
           setSuccessMessage('');
           if (userRole === 'SHIPPER') {
+            console.log('📦 Redirecting to shipper profile completion');
             window.location.href = '/shipper-complete-profile';
           } else if (userRole === 'TRANSPORTER') {
+            console.log('🚛 Redirecting to transporter profile completion');
             window.location.href = '/transporter-complete-profile';
+          } else {
+            console.log('🏠 Redirecting to login');
+            window.location.href = '/login';
           }
-        }, 2000);
+        }, 1500);
+      } else {
+        throw new Error(response.message || 'Registration failed');
       }
     } catch (error) {
-      console.error('Signup error:', error);
+      console.error('❌ Signup error:', error);
       setErrorMessage(error.message || 'Error creating account. Please try again.');
-    } finally {
+      setLoading(false);
       setIsSubmitting(false);
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
+      {/* Loading Overlay */}
+      {loading && (
+        <div className="fixed inset-0 flex items-center justify-center z-50" style={{ background: 'rgba(204, 198, 198, 0.5)', backdropFilter: 'blur(4px)' }}>
+          <div className="bg-white rounded-2xl p-8 shadow-2xl text-center max-w-md">
+            <div className="mb-6 flex justify-center">
+              <div className="animate-spin rounded-full h-16 w-16 border-4" style={{ borderColor: '#c8e3f5', borderTopColor: '#036BB4' }}></div>
+            </div>
+            <p className="font-semibold text-lg text-gray-900 mb-2">{loadingMessage}</p>
+            <p className="text-gray-500 text-sm">Please wait, this may take a moment...</p>
+          </div>
+        </div>
+      )}
+
       <div className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6">
         <div>
           <img src="/login-logo (2).png" alt="Logo" className="max-w-xs w-28 md:w-36 lg:w-40 mx-auto" />
@@ -377,12 +418,11 @@ export default function SignUpForm() {
                 </div>
                 {errors.truckTypes && <p className="mt-1 text-sm text-red-600">{errors.truckTypes}</p>}
                 
-                {/* Selected Truck Types Preview */}
                 {formData.truckTypes.length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-2">
                     {formData.truckTypes.map(type => {
                       const option = truckTypeOptions.find(opt => opt.value === type);
-                      if (!option) return null; // Safety check
+                      if (!option) return null;
                       const IconComponent = option.icon;
                       return (
                         <span key={type} className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm text-black" style={{backgroundColor: '#f0f7ff', color: '#036BB4'}}>

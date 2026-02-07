@@ -200,10 +200,11 @@ export default function CompleteShipperProfile() {
 
       if (response.success) {
         setSuccessMessage('✓ Profile completed successfully!');
-        setLoadingMessage('Redirecting to dashboard...');
+        setLoadingMessage('Profile completed. Redirecting to login...');
         setDebugInfo('');
+        
         setTimeout(() => {
-          window.location.href = '/shipper-dashboard';
+          window.location.href = '/login';
         }, 2000);
       } else {
         throw new Error(response.message || 'Failed to complete profile');
@@ -253,7 +254,7 @@ export default function CompleteShipperProfile() {
           <img
             src="/login-logo (2).png"
             alt="LAWANPAN TRUCK"
-            className="w-20 mx-auto mb-8 drop-shadow-lg"
+            className="w-30 mx-auto mb-8 "
           />
           <h1 className="text-4xl font-bold text-gray-900 mb-3">Complete Your Profile</h1>
           <p className="text-lg text-gray-600">Step {currentStep} of {totalSteps}</p>

@@ -1,10 +1,9 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { loginUser } from '../lib/apiClient';
-
 
 export default function LoginPage() {
   const router = useRouter();
@@ -19,90 +18,8 @@ export default function LoginPage() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  // Login Handler
-  const handleLoginChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setLoginData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value 
-    }));
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
-    }
-  };
-
-  const validateLoginForm = () => {
-    const newErrors = {};
-    if (!loginData.email) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(loginData.email)) {
-      newErrors.email = 'Email is invalid';
-    }
-    if (!loginData.password) {
-      newErrors.password = 'Password is required';
-    } else if (loginData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
-    }
-    return newErrors;
-  };
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    const newErrors = validateLoginForm();
-    
-    if (Object.keys(newErrors).length === 0) {
-      setLoading(true);
-      setErrors({});
-      
-      try {
-        console.log("🚀 Login attempt for:", loginData.email);
-        
-        const response = await loginUser(loginData.email, loginData.password);
-        
-        if (response.success) {
-          console.log("✅ Login successful");
-          
-          // Get user role from response
-          const userRole = response.data?.role;
-          
-          // Store remember password preference
-          if (loginData.rememberPassword) {
-            localStorage.setItem('rememberEmail', loginData.email);
-          } else {
-            localStorage.removeItem('rememberEmail');
-          }
-          
-          // Redirect based on role or to dashboard
-          if (userRole === 'SHIPPER' || userRole === 'shipper') {
-            console.log("📦 Redirecting to shipper dashboard");
-            router.push('/shipper/dashboard');
-          } else if (userRole === 'TRANSPORTER' || userRole === 'transporter') {
-            console.log("🚛 Redirecting to transporter dashboard");
-            router.push('/transporter/dashboard');
-          } else {
-            console.log("🏠 Redirecting to general dashboard");
-            router.push('/dashboard');
-          }
-        } else {
-          setErrors({ 
-            submit: response.message || 'Login failed. Please try again.' 
-          });
-        }
-      } catch (error) {
-        console.error("❌ Login error:", error);
-        setErrors({ 
-          submit: error.message || 'Invalid email or password. Please try again.' 
-        });
-      } finally {
-        setLoading(false);
-      }
-    } else {
-      setErrors(newErrors);
-    }
-  };
-
   // Load remembered email on component mount
-  React.useEffect(() => {
+  useEffect(() => {
     const rememberedEmail = localStorage.getItem('rememberEmail');
     if (rememberedEmail) {
       setLoginData(prev => ({
@@ -112,6 +29,167 @@ export default function LoginPage() {
       }));
     }
   }, []);
+
+  const handleLoginChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setLoginData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value 
+    }));
+    
+    // Clear errors when user types
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+    if (errors.submit) {
+      setErrors(prev => ({ ...prev, submit: '' }));
+    }
+  };
+
+  const validateLoginForm = () => {
+    const newErrors = {};
+    
+    if (!loginData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(loginData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+    
+    if (!loginData.password) {
+      newErrors.password = 'Password is required';
+    } else if (loginData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+    
+    return newErrors;
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    
+    // Validate form
+    const newErrors = validateLoginForm();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    
+    setLoading(true);
+    setErrors({});
+    
+    try {
+      console.log("🔐 Login attempt for:", loginData.email);
+      
+      // Call login API
+      const response = await loginUser(loginData.email, loginData.password);
+      
+      console.log("📦 Full Login response:", JSON.stringify(response, null, 2));
+      
+      if (response.success && response.data) {
+        console.log("✅ Login successful");
+        console.log("📋 Response data:", JSON.stringify(response.data, null, 2));
+        
+        // Extract user role - check multiple possible fields
+        let userRole = null;
+        
+        // Try different field names (case-insensitive)
+        const roleFields = ['role', 'Role', 'ROLE', 'user_role', 'userRole'];
+        for (const field of roleFields) {
+          if (response.data[field]) {
+            userRole = response.data[field];
+            console.log(`✅ Role found in field: ${field} = ${userRole}`);
+            break;
+          }
+        }
+        
+        // Check in nested user object if exists
+        if (!userRole && response.data.user) {
+          for (const field of roleFields) {
+            if (response.data.user[field]) {
+              userRole = response.data.user[field];
+              console.log(`✅ Role found in user.${field} = ${userRole}`);
+              break;
+            }
+          }
+        }
+        
+        // If still not found, check all keys containing "role"
+        if (!userRole) {
+          for (const key in response.data) {
+            if (key.toLowerCase().includes('role')) {
+              userRole = response.data[key];
+              console.log(`✅ Role found by pattern: ${key} = ${userRole}`);
+              break;
+            }
+          }
+        }
+        
+        // Normalize role to uppercase
+        if (userRole) {
+          userRole = userRole.toUpperCase();
+          console.log("👤 Normalized user role:", userRole);
+        } else {
+          console.error("❌ Role not found in response!");
+          console.log("Available keys in response.data:", Object.keys(response.data));
+        }
+        
+        // Store remember password preference
+        if (loginData.rememberPassword) {
+          localStorage.setItem('rememberEmail', loginData.email);
+        } else {
+          localStorage.removeItem('rememberEmail');
+        }
+        
+        // Store user role in localStorage for debugging
+        if (userRole) {
+          localStorage.setItem('user_role', userRole);
+        }
+        
+        // Small delay to ensure token is properly saved
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Redirect based on role
+        if (userRole === 'SHIPPER') {
+          console.log("📦 Redirecting to shipper dashboard");
+          window.location.href = '/dashboard/Shipper';
+        } else if (userRole === 'TRANSPORTER') {
+          console.log("🚛 Redirecting to transporter dashboard");
+          window.location.href = '/dashboard/Transporter';
+        } else {
+          console.warn("⚠️ Unknown role or role not found, redirecting to default dashboard");
+          console.log("Role value:", userRole);
+          window.location.href = '/dashboard';
+        }
+      } else {
+        // Login failed
+        console.error("❌ Login failed:", response.message);
+        setErrors({ 
+          submit: response.message || 'Invalid email or password. Please check your credentials and try again.' 
+        });
+      }
+    } catch (error) {
+      console.error("❌ Login error:", error);
+      
+      // Handle different error types
+      let errorMessage = 'Invalid email or password. Please try again.';
+      
+      if (error.message) {
+        if (error.message.includes('401') || error.message.includes('unauthorized')) {
+          errorMessage = 'Invalid email or password. Please check your credentials.';
+        } else if (error.message.includes('network') || error.message.includes('fetch')) {
+          errorMessage = 'Network error. Please check your internet connection.';
+        } else if (error.message.includes('404')) {
+          errorMessage = 'Account not found. Please sign up first.';
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
+      setErrors({ submit: errorMessage });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4 font-sans text-black">
@@ -132,6 +210,7 @@ export default function LoginPage() {
           Please enter your email and password to continue
         </p>
 
+        {/* Error Message */}
         {errors.submit && (
           <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
             {errors.submit}
@@ -155,6 +234,7 @@ export default function LoginPage() {
               } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition text-black bg-white`}
               placeholder="Enter your email"
               disabled={loading}
+              autoComplete="email"
             />
             {errors.email && (
               <p className="text-red-500 text-xs mt-1">{errors.email}</p>
@@ -178,12 +258,14 @@ export default function LoginPage() {
                 } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition pr-12 text-black bg-white`}
                 placeholder="Enter your password"
                 disabled={loading}
+                autoComplete="current-password"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition"
                 disabled={loading}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
@@ -222,7 +304,17 @@ export default function LoginPage() {
             disabled={loading}
             className="w-full text-white font-semibold py-3 rounded-lg transition duration-200 shadow-md hover:shadow-lg bg-[#036BB4] hover:bg-[#025191] disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? 'Logging in...' : 'Log In'}
+            {loading ? (
+              <span className="flex items-center justify-center">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Logging in...
+              </span>
+            ) : (
+              'Log In'
+            )}
           </button>
         </form>
 
